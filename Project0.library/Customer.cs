@@ -7,6 +7,7 @@ namespace Project0.library
         private string firstName;
         private string lastName;
         private Address custAddress;
+        private int custID;
 
         public string FirstName { get; set; }
         public string LastName { get; set; }

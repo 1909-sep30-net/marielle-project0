@@ -10,6 +10,7 @@ namespace Project0.library
         private Customer cust;
         private Store stor;
         private int num; //number of items of a product
+        private int orderNum;
 
         public Product Prod { get; set; }
         public Customer Cust { get; set; }

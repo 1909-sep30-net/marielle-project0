@@ -7,7 +7,8 @@ namespace Project0.library
     public class Store
     {
         private Address storeAddress;
-        //add inventory here i think
+        private Inventory inventory;
+        private int storeID;
         public Address StoreAddress { get; set; }
     }
 }

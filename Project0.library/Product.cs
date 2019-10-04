@@ -9,6 +9,7 @@ namespace Project0.library
         private double price;
         private string name;
         private string desc;
+        private int productID;
 
         public double Price { get; set; }
         public string Name { get; set; }
