@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Project0.library
 {
-    public class Store
+    public class Location
     {
         private Address storeAddress;
         private Inventory inventory;

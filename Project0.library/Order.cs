@@ -8,13 +8,13 @@ namespace Project0.library
     {
         private Product prod;
         private Customer cust;
-        private Store stor;
+        private Location stor;
         private int num; //number of items of a product
         private int orderNum;
 
         public Product Prod { get; set; }
         public Customer Cust { get; set; }
-        public Store Stor { get; set; }
+        public Location Stor { get; set; }
 
         public int Num { get; set; }
 
