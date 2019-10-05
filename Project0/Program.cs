@@ -7,8 +7,8 @@ namespace Project0
     {
         static void Main(string[] args)
         {
-            Menu start = new Menu();
-            start.welcome();
+            MainMenu start = new MainMenu();
+            start.Welcome();
         }
     }
 }
