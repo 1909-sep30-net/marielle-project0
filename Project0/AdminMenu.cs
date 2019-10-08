@@ -9,7 +9,7 @@ namespace Project0.App
         public void Welcome() 
         {
             Console.WriteLine("Welcome Back! What would you like to view?");
-            Console.WriteLine("[1] Location \n [2] Customer \n [3] Products \n [4] Orders");
+            Console.WriteLine("[1] Location \n [2] Customer \n [3] Products \n [4] Orders \n [5] Exit");
             string input = Console.ReadLine();
             switch (input)
             {
@@ -33,8 +33,16 @@ namespace Project0.App
                     AdminOrder ao = new AdminOrder();
                     ao.Menu();
                     break;
+                case "5":
+                    //go to exit
+                    ExitMenu exit = new ExitMenu();
+                    exit.Exit();
+                    break;
                 default:
                     //error handler
+                    ErrorHandler err = new ErrorHandler();
+                    err.InvalidInputMsg();
+                    Welcome();
                     break;
             }
 

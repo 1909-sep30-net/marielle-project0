@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Project0.library
+namespace Project0.BusinessLogic
 {
     public class Book : Product
     {

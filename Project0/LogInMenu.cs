@@ -20,7 +20,7 @@ namespace Project0.App
             ErrorHandler err = new ErrorHandler();
             if (ch.Verify(username, password))
             {
-                om.OrderMenu();
+               // om.Ordermenu();
             }
             else
             {
