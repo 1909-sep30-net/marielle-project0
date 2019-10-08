@@ -17,16 +17,12 @@ namespace Project0.BusinessLogic
             }
             set 
             {
-                validate(FirstName);
-                firstName = FirstName;
+                validate(value);
+                firstName = value;
 
             } }
 
-        private void validate(string s)
-        {
-            if (s == null || s == "" || s == " " || s == "\n") throw new CustomerException("Empty Input");
-           
-        }
+       
 
         public string LastName {
             get 
@@ -36,8 +32,8 @@ namespace Project0.BusinessLogic
 
             set 
             {
-                validate(LastName); 
-                lastName = LastName;
+                validate(value); 
+                lastName = value;
             } 
         }
         public Address CustAddress { get; set; }
@@ -48,9 +44,17 @@ namespace Project0.BusinessLogic
             }
             set 
             {
-                validate(UserName);
-                userName = UserName;
+                validate(value);
+                userName = value;
                 
-            } }
+            } 
+        
+        }
+        public int CustID { get; set; }
+        private void validate(string s)
+        {
+            if (s == null || s == "" || s == " " || s == "\n") throw new CustomerException("Empty Input");
+
+        }
     }
 }

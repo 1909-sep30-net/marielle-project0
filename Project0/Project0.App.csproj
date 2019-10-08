@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CheckOut.cs" />
+    <Compile Remove="LogInMenu.cs" />
+    <Compile Remove="MainMenu.cs" />
+    <Compile Remove="OrderMenu.cs" />
+    <Compile Remove="SignUpMenu.cs" />
+    <Compile Remove="StoreMenu.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Project0.BusinessLogic\Project0.BusinessLogic.csproj" />
     <ProjectReference Include="..\Project0.DataAccess\Project0.DataAccess.csproj" />
   </ItemGroup>

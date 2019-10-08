@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Project0.BusinessLogic
 {
-    class CustomerException:Exception
+     public class CustomerException:Exception
     {
         public CustomerException(string message) : base(message) { }
     }
