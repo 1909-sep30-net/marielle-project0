@@ -56,6 +56,9 @@ namespace Project0.App
                 case " ":
                     return false;
                     break;
+                case "":
+                    return false;
+                    break;
                 case "\n":
                     return false;
                     break;
@@ -68,6 +71,9 @@ namespace Project0.App
                     return false;
                     break;
                 case " ":
+                    return false;
+                    break;
+                case "":
                     return false;
                     break;
                 case "\n":

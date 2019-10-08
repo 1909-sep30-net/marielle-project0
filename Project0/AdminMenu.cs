@@ -9,7 +9,7 @@ namespace Project0.App
         public void Welcome() 
         {
             Console.WriteLine("Welcome Back! What would you like to view?");
-            Console.WriteLine("[1] Location \n [2] Customer \n [3] Products \n [4] Orders \n [5] Exit");
+            Console.WriteLine(" [1] Location \n [2] Customer \n [3] Products \n [4] Orders \n [5] Exit");
             string input = Console.ReadLine();
             switch (input)
             {

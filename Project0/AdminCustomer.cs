@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project0.BusinessLogic;
+using System;
 
 namespace Project0.App
 {
@@ -13,6 +14,9 @@ namespace Project0.App
             {
                 case "1":
                     //code to add customers;
+                    SignUpMenu sm = new SignUpMenu();
+                    sm.SignupMenu();
+
                     break;
                 case "2":
                     //code to view customers;
