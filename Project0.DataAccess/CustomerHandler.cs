@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Project0.BusinessLogic;
+using Project0.DummyData;
 
 namespace Project0.DataAccess
 {
@@ -39,7 +40,7 @@ namespace Project0.DataAccess
             return 0;
         }
 
-        public void Search(string firstName, string lastName)
+        public Customer Search(string firstName, string lastName)
         {
             //generate code that searches db by name
             switch (Validate(firstName, lastName))
@@ -48,18 +49,29 @@ namespace Project0.DataAccess
                     throw new CustomerException("Invalid name");
                     break;
                 case 1:
-                   
                     //first name valid, last name unknown
-
+                    foreach (Customer c in DummyCustomer.DCustomer) 
+                    {
+                        if (c.FirstName == firstName) return c;
+                    }
                     break;
                 case 2:
-
                     //last name valid, first name unknown
+                    foreach (Customer c in DummyCustomer.DCustomer)
+                    {
+                        if (c.LastName == lastName) return c;
+                    }
+                    
                     break;
                 case 3:
+                    foreach (Customer c in DummyCustomer.DCustomer)
+                    {
+                        if (c.LastName == lastName && c.FirstName == firstName) return c;
+                    }
                     //full name valid;
                     break;
             }
+            return new Customer();
             //code to Search customer in DB
         }
 

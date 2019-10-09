@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Project0.BusinessLogic;
+using Project0.DummyData;
 
 namespace Project0.DataAccess
 {
@@ -24,6 +25,11 @@ namespace Project0.DataAccess
         {
             //returns location inventory
             return null;
+        }
+
+        public List<Location> GetLocations()
+        {
+            return DummyLocations.DLocation;
         }
     }
 }

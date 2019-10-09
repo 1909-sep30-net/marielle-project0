@@ -6,6 +6,6 @@ namespace Project0.BusinessLogic
     {
         //Define what is in inventory
         public List<Product> Products { get; set; }
-        public Address Location { get; set; }
+        public List<int> Stock { get; set; }
     }
 }

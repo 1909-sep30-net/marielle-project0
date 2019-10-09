@@ -10,13 +10,13 @@ namespace Project0.BusinessLogic
         private Customer cust;
         private Location stor;
         private List<int> quantity; //quantity of products ordered
-        private int orderNum;
+        private List<int> orderNum;
 
         public List<Product> Prod { get; set; }
         public Customer Cust { get; set; }
         public Location Stor { get; set; }
 
-        public int OrderNum { get; set; }
+        public List<int> OrderNum { get; set; }
 
 
     }

@@ -105,7 +105,7 @@ namespace Project0.App
             }
         }
 
-        private void SearchCustomerMenu()
+        public Customer SearchCustomerMenu()
         {
             Console.WriteLine("Enter name in fields that apply, if unknown, leave blank");
             Console.WriteLine("Enter First Name: ");
@@ -115,7 +115,8 @@ namespace Project0.App
             try
             {
                 CustomerHandler ch = new CustomerHandler();
-                ch.Search(firstName, lastName);
+                return ch.Search(firstName, lastName);
+
             }
             catch (CustomerException ex)
             {
@@ -123,11 +124,30 @@ namespace Project0.App
                 Console.WriteLine(ex.Message);
                 TryAgain(SearchCustomerMenu);
                 
-                
             }
+            return new Customer();
         }
 
+
         private void TryAgain(Action last)
+        {
+            Console.WriteLine("Try again?");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "Y":
+                    last();
+                    break;
+                case "N":
+                    MainMenu();
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    TryAgain(last);
+                    break;
+            }
+        }
+        private void TryAgain(Func<Customer> last)
         {
             Console.WriteLine("Try again?");
             string choice = Console.ReadLine();
