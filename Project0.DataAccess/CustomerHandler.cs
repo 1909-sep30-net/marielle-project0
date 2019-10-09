@@ -55,6 +55,7 @@ namespace Project0.DataAccess
                     {
                         if (c.FirstName == firstName) return c;
                     }
+                    throw CustomerNotFoundException("Customer not found");
                     break;
                 case 2:
                     //last name valid, first name unknown
@@ -69,6 +70,7 @@ namespace Project0.DataAccess
                     {
                         if (c.LastName == lastName && c.FirstName == firstName) return c;
                     }
+                    throw CustomerNotFoundException("Customer not found");
                     //full name valid;
                     break;
             }
@@ -85,8 +87,8 @@ namespace Project0.DataAccess
         {
             int fName = 0;
             int lName = 0;
-            if (Regex.Match(firstName, @"\s*[A-z]").Success) fName++;
-            if (Regex.Match(lastName, @"\s*[A-z]").Success) lName = lName + 2;
+            if (Regex.Match(firstName, @"\s*[A-z]\s*").Success) fName++;
+            if (Regex.Match(lastName, @"\s*[A-z]\s*").Success) lName = lName + 2;
             return lName + fName;
             
         }

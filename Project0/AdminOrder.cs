@@ -126,6 +126,7 @@ namespace Project0.App
                 Date = DateTime.Now
             };
             oh.AddOrder(o);
+
         }
 
         private Location EnterLocationDetails()

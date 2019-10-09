@@ -28,7 +28,7 @@ namespace Project0.DataAccess
             List<Order> output = new List<Order>();
             foreach (Order o in DummyOrder.DOrder) 
             {
-                if (c == o.Cust) output.Add(o); 
+                if (c.FirstName == o.Cust.FirstName && c.LastName == o.Cust.LastName) output.Add(o); 
             }
             return output;
         }
@@ -38,7 +38,7 @@ namespace Project0.DataAccess
             List<Order> output = new List<Order>();
             foreach(Order o in DummyOrder.DOrder)
             {
-                if (l == o.Stor) output.Add(o);
+                if (l.BranchName == o.Stor.BranchName) output.Add(o);
             }
             return output;
         }
