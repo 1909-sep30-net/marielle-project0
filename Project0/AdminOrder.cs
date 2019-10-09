@@ -54,11 +54,10 @@ namespace Project0.App
             foreach(Order o in history)
             {
                 Console.WriteLine(o.Date);
-                int i = 0;
-                foreach(Product p in o.Prod)
+                foreach(Inventory i in o.CustOrder)
                 {
-                    Console.WriteLine(" Product: " + p.Name + " \n Quantity: " + o.Quantity[i]);
-                    i++;
+                    Console.WriteLine(" Product: " + i.Prod.Name + " \n Quantity: " + i.Stock);
+                    
                 }
             }
 
@@ -73,11 +72,10 @@ namespace Project0.App
             foreach(Order o in history)
             {
                 Console.WriteLine(o.Date);
-                int i = 0;
-                foreach(Product p in o.Prod)
+                foreach(Inventory i in o.CustOrder)
                 {
-                    Console.WriteLine(" Product: " + p.Name + "\n Quantity: " + o.Quantity[i]);
-                    i++;
+                    Console.WriteLine(" Product: " + i.Prod.Name + "\n Quantity: " + i.Stock);
+                    
                 }
 
             }
@@ -118,7 +116,7 @@ namespace Project0.App
                 Cust = c,
                 Stor = l,
                 Date = DateTime.Now,
-                CustOrder = 
+                CustOrder = custOrder
             };
             oh.AddOrder(o);
             oh.PrintOrderDetails(o);
