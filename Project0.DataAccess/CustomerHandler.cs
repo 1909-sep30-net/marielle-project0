@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using Project0.BusinessLogic;
 
 namespace Project0.DataAccess
@@ -34,9 +35,42 @@ namespace Project0.DataAccess
 
         public int GetCustomerID()
         {
-            //code to get customer ID;
+            //code to get customer ID from DB;
             return 0;
         }
-        
+
+        public void Search(string firstName, string lastName)
+        {
+            //generate code that searches db by name
+            switch (Validate(firstName, lastName))
+            {
+                case 0:
+                    throw new CustomerException("Invalid name");
+                    break;
+                case 1:
+                   
+                    //first name valid, last name unknown
+
+                    break;
+                case 2:
+
+                    //last name valid, first name unknown
+                    break;
+                case 3:
+                    //full name valid;
+                    break;
+            }
+            //code to Search customer in DB
+        }
+
+        private int Validate(string firstName, string lastName)
+        {
+            int fName = 0;
+            int lName = 0;
+            if (Regex.Match(firstName, @"\s*[A-z]").Success) fName++;
+            if (Regex.Match(lastName, @"\s*[A-z]").Success) lName = lName + 2;
+            return lName + fName;
+            
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace Project0.Test
             catch (CustomerException ex)
             {
 
-                throw ex;
+                Assert.True(true);
             }
 
             

@@ -9,7 +9,7 @@ namespace Project0.App
         public void Welcome() 
         {
             Console.WriteLine("Welcome Back! What would you like to view?");
-            Console.WriteLine(" [1] Location \n [2] Customer \n [3] Products \n [4] Orders \n [5] Exit");
+            Console.WriteLine(" [1] Location \n [2] Customer  \n [3] Orders \n [4] Exit");
             string input = Console.ReadLine();
             switch (input)
             {
@@ -21,19 +21,14 @@ namespace Project0.App
                 case "2":
                     //go to customer UI
                     AdminCustomer ac = new AdminCustomer();
-                    ac.Menu();
+                    ac.MainMenu();
                     break;
                 case "3":
-                    // go to products UI
-                    AdminProducts ap = new AdminProducts();
-                    ap.Menu();
-                    break;
-                case "4":
                     //go to order UI
                     AdminOrder ao = new AdminOrder();
                     ao.Menu();
                     break;
-                case "5":
+                case "4":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
                     exit.Exit();

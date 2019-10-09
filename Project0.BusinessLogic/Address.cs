@@ -3,6 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace Project0.BusinessLogic
 {
+    /// <summary>
+    /// Address format of program
+    /// </summary>
     public class Address
     {
         private string street, city;
@@ -17,7 +20,7 @@ namespace Project0.BusinessLogic
 
             set 
             {
-                if (Regex.Match(value, @"\d+\s[A-z]+?(\s[A-z])*").Success) street = value;
+                if (Regex.Match(value, @"\d+\s[A-z0-9]+?(\s[A-z])*").Success) street = value;
                 else 
                 {
                     throw new InvalidAddressException("Invalid Street");
@@ -35,7 +38,7 @@ namespace Project0.BusinessLogic
             set 
             {
                 if (Regex.Match(value, @"[A-z]+?(\s[A-z])*").Success) city = value;
-                throw new InvalidAddressException("Invalid City");
+                else { throw new InvalidAddressException("Invalid City"); }
             }
             
         }
@@ -44,16 +47,11 @@ namespace Project0.BusinessLogic
             get => state;
             set 
             {
-                validate(value);
                 state = value;
-                throw new InvalidAddressException("Invalid State");
             }
         }
 
-        private void validate(States value)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public int Zipcode 
         { 
@@ -61,7 +59,7 @@ namespace Project0.BusinessLogic
             set
             {
                 if (Regex.Match(value.ToString(), @"\d{5}").Success) zipcode = value;
-                throw new InvalidAddressException("Invalid Zipcode");
+                else { throw new InvalidAddressException("Invalid Zipcode"); }
             }
         }
     }

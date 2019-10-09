@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Project0.BusinessLogic
 {
@@ -13,6 +14,14 @@ namespace Project0.BusinessLogic
         public Address StoreAddress { get; set; }
         public Inventory StoreInventory { get; set; }
 
-        public string BranchName { get; set; }
+        public string BranchName 
+        { 
+            get => branchName; 
+            set
+            {
+                if (Regex.Match(value, @"\s*[A-z0-9]+\s*").Success) branchName = value;
+                else throw new InvalidLocationExceptio("Invalid Branch Name");
+            }
+        }
     }
 }

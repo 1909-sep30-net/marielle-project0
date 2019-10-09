@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Project0.BusinessLogic
 {
@@ -6,7 +7,7 @@ namespace Project0.BusinessLogic
     {
         private string firstName;
         private string lastName;
-        public string userName;
+        //public string userName;
         private Address custAddress;
         private int custID;
 
@@ -17,8 +18,17 @@ namespace Project0.BusinessLogic
             }
             set 
             {
-                validate(value);
-                firstName = value;
+                try
+                {
+                    validate(value);
+                    firstName = value;
+                }
+                catch (CustomerException)
+                {
+
+                    throw new CustomerException("Invalid First Name");
+                }
+                
 
             } }
 
@@ -32,28 +42,45 @@ namespace Project0.BusinessLogic
 
             set 
             {
-                validate(value); 
-                lastName = value;
+                try
+                {
+                    validate(value);
+                    lastName = value;
+                }
+                catch (CustomerException)
+                {
+
+                    throw new CustomerException("Invalid Last Name");
+                }
             } 
         }
         public Address CustAddress { get; set; }
-        public string UserName {
-            get
-            {
-                return UserName;
-            }
-            set 
-            {
-                validate(value);
-                userName = value;
+        //public string UserName {
+        //    get
+        //    {
+        //        return UserName;
+        //    }
+        //    set 
+        //    {
+        //        try
+        //        {
+        //            validate(value);
+        //            userName = value;
+
+        //        }
+        //        catch (CustomerException ex)
+        //        {
+
+        //            throw ex;
+        //        }
                 
-            } 
+        //    } 
         
-        }
+        //}
         public int CustID { get; set; }
         private void validate(string s)
         {
-            if (s == null || s == "" || s == " " || s == "\n") throw new CustomerException("Empty Input");
+            if (!(Regex.Match(s, @"\s*[A-z]+").Success)) throw new CustomerException("Empty Input");
 
         }
     }

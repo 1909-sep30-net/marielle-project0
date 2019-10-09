@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Project0.BusinessLogic
 {
     [Serializable]
-    internal class InvalidAddressException : Exception
+    public class InvalidAddressException : Exception
     {
         public InvalidAddressException()
         {

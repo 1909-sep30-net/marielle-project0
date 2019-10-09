@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AdminProducts.cs" />
     <Compile Remove="CheckOut.cs" />
     <Compile Remove="LogInMenu.cs" />
     <Compile Remove="MainMenu.cs" />

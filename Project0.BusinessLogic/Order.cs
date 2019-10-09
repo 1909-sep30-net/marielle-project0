@@ -16,7 +16,7 @@ namespace Project0.BusinessLogic
         public Customer Cust { get; set; }
         public Location Stor { get; set; }
 
-        public int Num { get; set; }
+        public int OrderNum { get; set; }
 
 
     }

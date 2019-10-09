@@ -7,12 +7,12 @@ namespace Project0.App
         public void Menu()
         {
             Console.WriteLine("Welcome to Location UI! \n What would you like to do?");
-            Console.WriteLine("[1] Add Location \n[2] View Location Inventory \n[3] Exit");
+            Console.WriteLine("[1] View Order History of Location \n [2] View Location Inventory \n [3] Exit");
             string input = Console.ReadLine();
             switch (input)
             {
                 case "1":
-                    //code to add a location
+                    //code to view orderhistory of location
                     break;
                 case "2":
                     //code to view location inventory
