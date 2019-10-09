@@ -41,9 +41,10 @@ namespace Project0.DataAccess
             return 0;
         }
 
-        public Customer Search(string firstName, string lastName)
+        public List<Customer> Search(string firstName, string lastName)
         {
             //generate code that searches db by name
+            List<Customer> customerFound = new List<Customer>();
             switch (Validate(firstName, lastName))
             {
                 case 0:
@@ -53,7 +54,7 @@ namespace Project0.DataAccess
                     //first name valid, last name unknown
                     foreach (Customer c in DummyCustomer.DCustomer) 
                     {
-                        if (c.FirstName == firstName) return c;
+                        if (c.FirstName == firstName) customerFound.Add(c);
                     }
                     throw CustomerNotFoundException("Customer not found");
                     break;
@@ -61,20 +62,20 @@ namespace Project0.DataAccess
                     //last name valid, first name unknown
                     foreach (Customer c in DummyCustomer.DCustomer)
                     {
-                        if (c.LastName == lastName) return c;
+                        if (c.LastName == lastName) customerFound.Add(c);
                     }
                     throw CustomerNotFoundException("Customer not found");
                     break;
                 case 3:
                     foreach (Customer c in DummyCustomer.DCustomer)
                     {
-                        if (c.LastName == lastName && c.FirstName == firstName) return c;
+                        if (c.LastName == lastName && c.FirstName == firstName) customerFound.Add(c);
                     }
                     throw CustomerNotFoundException("Customer not found");
                     //full name valid;
                     break;
             }
-            return new Customer();
+            return customerFound;
             //code to Search customer in DB
         }
 

@@ -55,10 +55,10 @@ namespace Project0.App
                 i++;
             }
             string input = Console.ReadLine();
-            Inventory Linventory = lh.GetInventory(locations[int.Parse(input)]);
-            for(int j = 0; j < Linventory.Products.Count; j++)
+            List<Inventory> storeInventory = lh.GetInventory(locations[int.Parse(input)]);
+            foreach(Inventory inv in storeInventory) 
             {
-                Console.WriteLine("Product: " + Linventory.Products[j].Name + " \n Quantity: " + Linventory.Stock[j]);
+                Console.WriteLine("Product: " + inv.Prod.Name + " \n Stock: " + inv.Stock);
             }
 
         }

@@ -147,8 +147,17 @@ namespace Project0.App
             try
             {
                 CustomerHandler ch = new CustomerHandler();
-                return ch.Search(firstName, lastName);
-
+                List<Customer> c = ch.Search(firstName, lastName);
+                if (c.Count > 0)
+                {
+                    Console.WriteLine(c.Count + " customers found");
+                    foreach (Customer cust in c)
+                    {
+                        Console.WriteLine("Name: " + cust.FirstName + " " + cust.LastName + " City: " + cust.CustAddress.City);
+                    }
+                }
+                Console.WriteLine("Choose customer");
+                //Add code to choose customer
             }
             catch (CustomerException ex)
             {

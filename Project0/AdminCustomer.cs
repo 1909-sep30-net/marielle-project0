@@ -1,6 +1,7 @@
 ﻿using Project0.BusinessLogic;
 using Project0.DataAccess;
 using System;
+using System.Collections.Generic;
 
 namespace Project0.App
 {
@@ -121,7 +122,37 @@ namespace Project0.App
             try
             {
                 CustomerHandler ch = new CustomerHandler();
-                ch.Search(firstName, lastName);
+                List<Customer> c = ch.Search(firstName, lastName);
+                if (c.Count > 0)
+                {
+                    Console.WriteLine(c.Count + " customers found");
+                    foreach (Customer cust in c) 
+                    {
+                        Console.WriteLine("Name: " + cust.FirstName + " " + cust.LastName + " City: "+ cust.CustAddress.City);
+                    }
+                }
+                Console.WriteLine("[1] Back to main menu? \n[2] Customer Menu?\n[3] Exit?");
+                string input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        AdminMenu am = new AdminMenu();
+                        am.Welcome();
+                        break;
+                    case "2":
+                        MainMenu();
+                        break;
+                    case "3":
+                        ExitMenu exit = new ExitMenu();
+                        exit.Exit();
+                        break;
+                    default:
+                        ErrorHandler err = new ErrorHandler();
+                        err.InvalidInputMsg();
+                        ExitMenu ex = new ExitMenu();
+                        ex.Exit();
+                        break;
+                }
 
             }
             catch (CustomerException ex)

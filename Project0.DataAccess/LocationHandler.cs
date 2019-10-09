@@ -5,7 +5,9 @@ using Project0.BusinessLogic;
 using Project0.DummyData;
 
 namespace Project0.DataAccess
-{
+{/// <summary>
+/// Handles data access to locations
+/// </summary>
     public class LocationHandler
     {
         //public List<string> GetNearestStore(Address custAddress)
@@ -28,6 +30,7 @@ namespace Project0.DataAccess
 
         public List<Inventory> GetInventory(Location location)
         {
+            //gets inventory from location in db
             foreach(Location l in DummyLocations.DLocation)
             {
                 if (l.BranchName == location.BranchName) return l.StoreInventory;
