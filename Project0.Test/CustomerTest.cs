@@ -15,7 +15,6 @@ namespace Project0.Test
                 {
                     FirstName = "",
                     LastName = "",
-                    UserName = "",
                     CustAddress = null
                 };
                 Assert.True(false, "Failed");

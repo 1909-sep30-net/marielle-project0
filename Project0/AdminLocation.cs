@@ -10,7 +10,7 @@ namespace Project0.App
         public void Menu()
         {
             Console.WriteLine("Welcome to Location UI! \n What would you like to do?");
-            Console.WriteLine("[1] View Order History of Location \n [2] View Location Inventory \n [3] Exit");
+            Console.WriteLine("[1] View Order History of Location \n [2] View Location Inventory \n [3] Go back to Main Menu \n [4] Exit");
             string input = Console.ReadLine();
             switch (input)
             {
@@ -22,9 +22,13 @@ namespace Project0.App
                 case "2":
                     //code to view location inventory
                     ViewLocationInventory();
-
                     break;
                 case "3":
+                    //go back to Main Menu
+                    AdminMenu main = new AdminMenu();
+                    main.Welcome();
+                    break;
+                case "4":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
                     exit.Exit();

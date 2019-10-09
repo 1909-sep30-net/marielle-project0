@@ -10,7 +10,7 @@ namespace Project0.App
         public void Menu()
         {
             Console.WriteLine("Welcome to Order UI! \n What would you like to do?");
-            Console.WriteLine(" [1] Place Order \n [2] View Order History of Customer \n [3] View Order History of Location\n [4] Exit");
+            Console.WriteLine(" [1] Place Order \n [2] View Order History of Customer \n [3] View Order History of Location\n [4] Return to Main Menu \n [5] Exit");
             string input = Console.ReadLine();
             switch (input)
             {
@@ -27,6 +27,11 @@ namespace Project0.App
                     ViewLocationOrderHistory();
                     break;
                 case "4":
+                    //go back to Main Menu
+                    AdminMenu main = new AdminMenu();
+                    main.Welcome();
+                    break;
+                case "5":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
                     exit.Exit();
