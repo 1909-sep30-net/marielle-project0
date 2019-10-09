@@ -30,9 +30,9 @@ namespace Project0.Test
         public void UpdateInventoryShouldUpdate()
         {
             LocationHandler lh = new LocationHandler();
-            int origStock = DummyData.DummyLocations.DLocation[0].StoreInventory.Stock[0];
-            lh.UpdateInventory(DummyData.DummyProduce.DProduce[0], 3, DummyData.DummyLocations.DLocation[0]);
-            int newStock = DummyData.DummyLocations.DLocation[0].StoreInventory.Stock[0];
+            int origStock = DummyData.DummyLocations.DLocation[0].StoreInventory[0].Stock;
+            lh.UpdateInventory(DummyData.DummyProduce.DInventory[0], DummyData.DummyLocations.DLocation[0]);
+            int newStock = DummyData.DummyLocations.DLocation[0].StoreInventory[0].Stock;
             Assert.False(origStock == newStock);
         }
     }

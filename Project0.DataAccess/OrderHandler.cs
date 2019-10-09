@@ -10,10 +10,10 @@ namespace Project0.DataAccess
     /// </summary>
     public class OrderHandler
     {
-        public List<Product> GetProducts()
-        {
-            return DummyProduce.DProduce;
-        }
+        //public List<Product> GetProducts()
+        //{
+        //    return DummyProduce.DProduce;
+        //}
 
         public void AddOrder(Order o)
         {
@@ -41,6 +41,12 @@ namespace Project0.DataAccess
                 if (l.BranchName == o.Stor.BranchName) output.Add(o);
             }
             return output;
+        }
+
+        public void PrintOrderDetails(Order o)
+        {
+            Console.WriteLine("Thank you for your patronage!");
+            
         }
     }
 }

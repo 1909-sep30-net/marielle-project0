@@ -57,7 +57,7 @@ namespace Project0.App
                 int i = 0;
                 foreach(Product p in o.Prod)
                 {
-                    Console.WriteLine("Product: " + p.Name + " \n Quantity: " + o.Quantity[i]);
+                    Console.WriteLine(" Product: " + p.Name + " \n Quantity: " + o.Quantity[i]);
                     i++;
                 }
             }
@@ -92,26 +92,22 @@ namespace Project0.App
             Customer c = EnterCustomerDetails();
             Location l = EnterLocationDetails();
             string choice;
-            List<Product> custOrder = new List<Product>();
-            List<int> quantity = new List<int>();
+            List<Inventory> custOrder = new List<Inventory>();
             do
             {
                 Console.WriteLine("Choose Product to Order:");
-                List<Product> produce = oh.GetProducts();
-                int i = 0;
-                foreach (Product p in produce) 
+                List<Inventory> availInvent = lh.GetInventory(l);
+                int j = 0;
+                foreach (Inventory i in availInvent) 
                 {
-                    Console.WriteLine("["+ i+"] " + "Name: "+p.Name + "Price: " + p.Price );
-                    i++;
+                    Console.WriteLine("["+ i+"] " + " Name: "+i.Prod.Name + " Price: " + i.Prod.Price + " Remaining Stock" + i.Stock);
+                    j++;
                 }
                 string input = Console.ReadLine();
                 Console.WriteLine("Enter Quantity: ");
                 string amount = Console.ReadLine();
-
-                custOrder.Add(produce[i]);
-                quantity.Add(int.Parse(amount));
-
-                lh.UpdateInventory(produce[i], int.Parse(amount), l);
+                custOrder.Add(new Inventory() { Prod = availInvent[int.Parse(input)].Prod, Stock = int.Parse(amount) }); 
+                lh.UpdateInventory(custOrder[custOrder.Count - 1], l);
 
                 Console.WriteLine("Would you like to order another product? \n Y^(Yes) N^(No)");
                 choice = Console.ReadLine();
@@ -120,13 +116,12 @@ namespace Project0.App
             Order o = new Order()
             {
                 Cust = c,
-                Prod = custOrder,
                 Stor = l,
-                Quantity = quantity,
-                Date = DateTime.Now
+                Date = DateTime.Now,
+                CustOrder = 
             };
             oh.AddOrder(o);
-
+            oh.PrintOrderDetails(o);
         }
 
         private Location EnterLocationDetails()

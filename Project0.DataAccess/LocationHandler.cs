@@ -26,30 +26,28 @@ namespace Project0.DataAccess
             return DummyLocations.DLocation;
         }
 
-        public Inventory GetInventory(Location location)
+        public List<Inventory> GetInventory(Location location)
         {
             foreach(Location l in DummyLocations.DLocation)
             {
-                if (l == location) return l.StoreInventory;
+                if (l.BranchName == location.BranchName) return l.StoreInventory;
             }
             return null;
         }
 
-        public void UpdateInventory(Product product, int v, Location local)
+        public void UpdateInventory(Inventory inv, Location local)
         {
             //updates store inventory
             foreach (var l in DummyLocations.DLocation)
             {
-                if(l == local)
+                if(l.BranchName == local.BranchName)
                 {
-                    int i = 0;
-                    foreach(Product p in local.StoreInventory.Products)
+                    foreach(Inventory i in l.StoreInventory)
                     {
-                        if(p == product)
+                        if(i.Prod.Name == inv.Prod.Name)
                         {
-                            local.StoreInventory.Stock[i] = local.StoreInventory.Stock[i] - v;
+                            i.Stock = i.Stock - inv.Stock;
                         }
-                        i++;
                     }
                 }
             }

@@ -44,5 +44,28 @@ namespace Project0.DummyData
         };
 
         public static List<int> DStock = new List<int>() { 10, 20, 30, 40 };
+        public static List<Inventory> DInventory = new List<Inventory>()
+        {
+            new Inventory()
+            {
+                Prod = DProduce[0],
+                Stock = DStock[0]
+            },
+            new Inventory()
+            {
+                Prod = DProduce[1],
+                Stock = DStock[1]
+            },
+            new Inventory()
+            {
+                Prod = DProduce[2],
+                Stock = DStock[2]
+            },
+            new Inventory()
+            {
+                Prod = DProduce[3],
+                Stock = DStock[3]
+            },
+        };
     }
 }

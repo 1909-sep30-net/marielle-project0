@@ -19,11 +19,7 @@ namespace Project0.DummyData
                     State = States.TX,
                     Zipcode = 70610
                 },
-                StoreInventory = new Inventory()
-                {
-                    Products = DummyProduce.DProduce,
-                    Stock = DummyProduce.DStock 
-                }
+                StoreInventory = DummyProduce.DInventory
             },
              new Location()
             {
@@ -35,11 +31,7 @@ namespace Project0.DummyData
                     State = States.TX,
                     Zipcode = 70610
                 },
-                StoreInventory = new Inventory()
-                {
-                    Products = DummyProduce.DProduce,
-                    Stock = DummyProduce.DStock
-                }
+                StoreInventory = DummyProduce.DInventory
             },
               new Location()
             {
@@ -51,11 +43,7 @@ namespace Project0.DummyData
                     State = States.TX,
                     Zipcode = 70610
                 },
-                StoreInventory = new Inventory()
-                {
-                    Products = DummyProduce.DProduce,
-                    Stock = DummyProduce.DStock
-                }
+                StoreInventory = DummyProduce.DInventory
             }
         };
     }
