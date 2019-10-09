@@ -18,6 +18,29 @@ namespace Project0.DataAccess
         public void AddOrder(Order o)
         {
             //code to add order in db
+            //Adding order to dummy list
+            DummyOrder.DOrder.Add(o);
+        }
+
+        public List<Order> GetCustomerHistory(Customer c)
+        {
+            //get customer order history
+            List<Order> output = new List<Order>();
+            foreach (Order o in DummyOrder.DOrder) 
+            {
+                if (c == o.Cust) output.Add(o); 
+            }
+            return output;
+        }
+
+        public List<Order> GetLocationHistory(Location l)
+        {
+            List<Order> output = new List<Order>();
+            foreach(Order o in DummyOrder.DOrder)
+            {
+                if (l == o.Stor) output.Add(o);
+            }
+            return output;
         }
     }
 }

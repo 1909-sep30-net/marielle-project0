@@ -40,14 +40,42 @@ namespace Project0.App
             }
         }
 
-        private void ViewLocationOrderHistory()
+        public void ViewLocationOrderHistory()
         {
             //code to view location history
+            Location l = EnterLocationDetails();
+            OrderHandler oh = new OrderHandler();
+            List<Order> history = oh.GetLocationHistory(l);
+            foreach(Order o in history)
+            {
+                Console.WriteLine(o.Date);
+                int i = 0;
+                foreach(Product p in o.Prod)
+                {
+                    Console.WriteLine("Product: " + p.Name + " \n Quantity: " + o.Quantity[i]);
+                    i++;
+                }
+            }
+
         }
 
         private void ViewCustomerOrderHistory()
         {
-           //code to view customer history
+            //code to view customer history
+            Customer c = EnterCustomerDetails();
+            OrderHandler oh = new OrderHandler();
+            List<Order> history = oh.GetCustomerHistory(c);
+            foreach(Order o in history)
+            {
+                Console.WriteLine(o.Date);
+                int i = 0;
+                foreach(Product p in o.Prod)
+                {
+                    Console.WriteLine(" Product: " + p.Name + "\n Quantity: " + o.Quantity[i]);
+                    i++;
+                }
+
+            }
         }
 
         private void AddOrder()
@@ -55,6 +83,7 @@ namespace Project0.App
             //code to place order
 
             OrderHandler oh = new OrderHandler();
+            LocationHandler lh = new LocationHandler();
             Customer c = EnterCustomerDetails();
             Location l = EnterLocationDetails();
             string choice;
@@ -76,6 +105,9 @@ namespace Project0.App
 
                 custOrder.Add(produce[i]);
                 quantity.Add(int.Parse(amount));
+
+                lh.UpdateInventory(produce[i], int.Parse(amount), l);
+
                 Console.WriteLine("Would you like to order another product? \n Y^(Yes) N^(No)");
                 choice = Console.ReadLine();
 
@@ -85,7 +117,8 @@ namespace Project0.App
                 Cust = c,
                 Prod = custOrder,
                 Stor = l,
-                OrderNum = quantity
+                Quantity = quantity,
+                Date = DateTime.Now
             };
             oh.AddOrder(o);
         }
@@ -107,9 +140,29 @@ namespace Project0.App
 
         private Customer EnterCustomerDetails()
         {
-            AdminCustomer ac = new AdminCustomer();
-            return ac.SearchCustomerMenu();
+            Console.WriteLine("Enter name in fields that apply, if unknown, leave blank");
+            Console.WriteLine("Enter First Name: ");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Enter Last Name: ");
+            string lastName = Console.ReadLine();
+            try
+            {
+                CustomerHandler ch = new CustomerHandler();
+                return ch.Search(firstName, lastName);
 
+            }
+            catch (CustomerException ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                EnterCustomerDetails();
+            }
+            catch (NotImplementedException ex) 
+            {
+                Console.WriteLine(ex.Message);
+                EnterCustomerDetails();
+            }
+            return new Customer();
         }
     }
 }

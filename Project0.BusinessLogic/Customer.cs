@@ -12,10 +12,7 @@ namespace Project0.BusinessLogic
         private int custID;
 
         public string FirstName {
-            get
-            {
-                return FirstName;
-            }
+            get => firstName;
             set 
             {
                 try
@@ -35,11 +32,7 @@ namespace Project0.BusinessLogic
        
 
         public string LastName {
-            get 
-            {
-                return LastName;
-            }
-
+            get => lastName;
             set 
             {
                 try

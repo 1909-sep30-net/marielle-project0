@@ -30,7 +30,8 @@ namespace Project0.DataAccess
 
         public void AddCustomer(Customer c)
         {
-           //Code to add customer to database
+            //Code to add customer to database
+            DummyCustomer.DCustomer.Add(c);
             
         }
 
@@ -61,7 +62,7 @@ namespace Project0.DataAccess
                     {
                         if (c.LastName == lastName) return c;
                     }
-                    
+                    throw CustomerNotFoundException("Customer not found");
                     break;
                 case 3:
                     foreach (Customer c in DummyCustomer.DCustomer)
@@ -73,6 +74,11 @@ namespace Project0.DataAccess
             }
             return new Customer();
             //code to Search customer in DB
+        }
+
+        public Exception CustomerNotFoundException(string v)
+        {
+            throw new NotImplementedException(v);
         }
 
         private int Validate(string firstName, string lastName)

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Project0.BusinessLogic;
+using Project0.DataAccess;
+using System;
+using System.Collections.Generic;
 
 namespace Project0.App
 {
@@ -13,9 +16,13 @@ namespace Project0.App
             {
                 case "1":
                     //code to view orderhistory of location
+                    AdminOrder ao = new AdminOrder();
+                    ao.ViewLocationOrderHistory();
                     break;
                 case "2":
                     //code to view location inventory
+                    ViewLocationInventory();
+
                     break;
                 case "3":
                     //go to exit
@@ -29,6 +36,27 @@ namespace Project0.App
                     Menu();
                     break;
             }
+        }
+
+        private void ViewLocationInventory()
+        {
+            //code to View Inventory of Chosen Location
+            Console.WriteLine("Choose Branch");
+            LocationHandler lh = new LocationHandler();
+            List<Location> locations = lh.GetLocations();
+            int i = 0;
+            foreach(Location l in locations)
+            {
+                Console.WriteLine(@"[{i}] {l.BranchName}");
+                i++;
+            }
+            string input = Console.ReadLine();
+            Inventory Linventory = lh.GetInventory(locations[int.Parse(input)]);
+            for(int j = 0; j < Linventory.Products.Count; j++)
+            {
+                Console.WriteLine("Product: " + Linventory.Products[j].Name + " \n Quantity: " + Linventory.Stock[j]);
+            }
+
         }
     }
 }
