@@ -87,6 +87,23 @@ namespace Project0.App
 
             OrderHandler oh = new OrderHandler();
             LocationHandler lh = new LocationHandler();
+            Console.WriteLine("New Customer? \n Y^(YES) N^(NO))");
+            string input = Console.ReadLine();
+
+            switch (input)
+            { 
+                case "Y":
+                    AdminCustomer ac = new AdminCustomer();
+                    ac.AddCustomerMenu();
+                    break;
+                case "N":
+                    break;
+                default:
+                    ErrorHandler err = new ErrorHandler();
+                    err.InvalidInputMsg();
+                    AddOrder();
+                    break;
+            }
             Customer c = EnterCustomerDetails();
             Location l = EnterLocationDetails();
             string choice;
@@ -98,10 +115,10 @@ namespace Project0.App
                 int j = 0;
                 foreach (Inventory i in availInvent) 
                 {
-                    Console.WriteLine("["+ i+"] " + " Name: "+i.Prod.Name + " Price: " + i.Prod.Price + " Remaining Stock" + i.Stock);
+                    Console.WriteLine("["+ j +"] " + " Name: "+i.Prod.Name + " Price: " + i.Prod.Price + " Remaining Stock" + i.Stock);
                     j++;
                 }
-                string input = Console.ReadLine();
+                input = Console.ReadLine();
                 Console.WriteLine("Enter Quantity: ");
                 string amount = Console.ReadLine();
                 custOrder.Add(new Inventory() { Prod = availInvent[int.Parse(input)].Prod, Stock = int.Parse(amount) }); 
@@ -120,6 +137,7 @@ namespace Project0.App
             };
             oh.AddOrder(o);
             oh.PrintOrderDetails(o);
+            Menu();
         }
 
         private Location EnterLocationDetails()
@@ -148,16 +166,19 @@ namespace Project0.App
             {
                 CustomerHandler ch = new CustomerHandler();
                 List<Customer> c = ch.Search(firstName, lastName);
+                int i = 0;
                 if (c.Count > 0)
                 {
                     Console.WriteLine(c.Count + " customers found");
                     foreach (Customer cust in c)
                     {
-                        Console.WriteLine("Name: " + cust.FirstName + " " + cust.LastName + " City: " + cust.CustAddress.City);
+                        Console.WriteLine("["+i+"]"+"Name: " + cust.FirstName + " " + cust.LastName + " City: " + cust.CustAddress.City);
+                        i++;
                     }
                 }
                 Console.WriteLine("Choose customer");
-                //Add code to choose customer
+                string choice = Console.ReadLine();
+                return c[int.Parse(choice)];
             }
             catch (CustomerException ex)
             {

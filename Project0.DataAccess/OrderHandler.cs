@@ -10,11 +10,7 @@ namespace Project0.DataAccess
     /// </summary>
     public class OrderHandler
     {
-        //public List<Product> GetProducts()
-        //{
-        //    return DummyProduce.DProduce;
-        //}
-
+        
         public void AddOrder(Order o)
         {
             //code to add order in db
@@ -45,7 +41,14 @@ namespace Project0.DataAccess
 
         public void PrintOrderDetails(Order o)
         {
-            Console.WriteLine("Thank you for your patronage!");
+            Console.WriteLine("Order placed!");
+            Console.WriteLine($"Customer Name: {o.Cust.FirstName} {o.Cust.LastName} \nBranchname: {o.Stor.BranchName}");
+            foreach(Inventory i in o.CustOrder)
+            {
+                Console.WriteLine($"Product: {i.Prod.Name} \n Price (per unit): {i.Prod.Price} \n Quantity: {i.Stock}");
+               
+            }
+            Console.WriteLine($"Order Total: {o.Total}");
             
         }
     }

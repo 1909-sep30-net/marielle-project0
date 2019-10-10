@@ -51,7 +51,7 @@ namespace Project0.App
             int i = 0;
             foreach(Location l in locations)
             {
-                Console.WriteLine(@"[{i}] {l.BranchName}");
+                Console.WriteLine($"[{i}] {l.BranchName}");
                 i++;
             }
             string input = Console.ReadLine();

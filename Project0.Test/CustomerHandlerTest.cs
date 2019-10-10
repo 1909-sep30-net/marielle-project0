@@ -35,8 +35,8 @@ namespace Project0.Test
             CustomerHandler ch = new CustomerHandler();
             try
             {
-                Customer c = ch.Search(firstName, lastName);
-                Assert.True(c != new Customer());
+               List<Customer> c = ch.Search(firstName, lastName);
+                Assert.True(c != null);
             }
             catch (Exception)
             {

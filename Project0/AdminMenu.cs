@@ -8,7 +8,8 @@ namespace Project0.App
     {
         public void Welcome() 
         {
-            Console.WriteLine("Welcome Back! What would you like to view?");
+            Console.WriteLine("Tindahan ni Aling Nena");
+            Console.WriteLine("Welcome BacK! What would you like to view?");
             Console.WriteLine(" [1] Location \n [2] Customer  \n [3] Orders \n [4] Exit");
             string input = Console.ReadLine();
             switch (input)

@@ -40,7 +40,7 @@ namespace Project0.App
             }
         }
 
-        private void AddCustomerMenu()
+        public void AddCustomerMenu()
         {
             //code to add customers;
             //adds customer info
@@ -48,10 +48,6 @@ namespace Project0.App
             string firstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name:");
             string lastName = Console.ReadLine();
-
-            //Adding Username
-            //Console.WriteLine("Enter User Name:");
-            //string userName = Console.ReadLine();
 
             Console.WriteLine("Enter Street:");
             string street = Console.ReadLine();
@@ -80,13 +76,13 @@ namespace Project0.App
                 {
                     FirstName = firstName,
                     LastName = lastName,
-                   // UserName = userName,
                     CustAddress = custAddress
                 };
                 CustomerHandler ch = new CustomerHandler();
                 ch.AddCustomer(c);
                 Console.WriteLine("Customer added!");
                 MainMenu();
+                
             }
             catch (CustomerException ex)
             {
@@ -172,7 +168,7 @@ namespace Project0.App
 
         private void TryAgain(Action last)
         {
-            Console.WriteLine("Try again?");
+            Console.WriteLine("Try again? \n Y^(YES) N^(NO)");
             string choice = Console.ReadLine();
             switch (choice)
             {

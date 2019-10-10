@@ -16,9 +16,7 @@ namespace Project0.Test
             {
                 Cust = new Customer(),
                 Stor = new Location(),
-                Date = DateTime.Now,
-                Prod = new List<Product>(),
-                Quantity = new List<int>()
+                Date = DateTime.Now
             };
             OrderHandler oh = new OrderHandler();
             oh.AddOrder(o);
@@ -71,12 +69,6 @@ namespace Project0.Test
             }
         }
 
-        [Fact]
-
-        public void GetProductsShouldReturnProductList()
-        {
-            OrderHandler oh = new OrderHandler();
-            Assert.Equal<List<Product>>(DummyData.DummyProduce.DProduce, oh.GetProducts());
-        }
+        
     }
 }

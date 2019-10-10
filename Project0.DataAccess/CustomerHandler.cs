@@ -49,31 +49,33 @@ namespace Project0.DataAccess
             {
                 case 0:
                     throw new CustomerException("Invalid name");
-                    break;
+                    
                 case 1:
                     //first name valid, last name unknown
                     foreach (Customer c in DummyCustomer.DCustomer) 
                     {
                         if (c.FirstName == firstName) customerFound.Add(c);
                     }
-                    throw CustomerNotFoundException("Customer not found");
+                    if(customerFound == null) throw CustomerNotFoundException("Customer not found");
                     break;
+
                 case 2:
                     //last name valid, first name unknown
                     foreach (Customer c in DummyCustomer.DCustomer)
                     {
                         if (c.LastName == lastName) customerFound.Add(c);
                     }
-                    throw CustomerNotFoundException("Customer not found");
+                    if (customerFound == null) throw CustomerNotFoundException("Customer not found");
                     break;
+
                 case 3:
                     foreach (Customer c in DummyCustomer.DCustomer)
                     {
                         if (c.LastName == lastName && c.FirstName == firstName) customerFound.Add(c);
                     }
-                    throw CustomerNotFoundException("Customer not found");
-                    //full name valid;
+                    if (customerFound == null) throw CustomerNotFoundException("Customer not found");
                     break;
+                    //full name valid;
             }
             return customerFound;
             //code to Search customer in DB
