@@ -39,8 +39,7 @@ namespace Project0.App
                     break;
             }
         }
-
-        public void AddCustomerMenu()
+        public Customer AddNewCustomer()
         {
             //code to add customers;
             //adds customer info
@@ -59,7 +58,6 @@ namespace Project0.App
 
             Console.WriteLine("Enter Zipcode:");
             string zip = Console.ReadLine();
-
             try
             {
                 States state = (States)Enum.Parse(typeof(States), inputState, true);
@@ -81,6 +79,34 @@ namespace Project0.App
                 CustomerHandler ch = new CustomerHandler();
                 ch.AddCustomer(c);
                 Console.WriteLine("Customer added!");
+                return c;
+
+            }
+            catch (CustomerException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentException e)
+            {
+                throw e;
+            }
+            catch (FormatException e)
+            {
+                throw e;
+            }
+            catch (InvalidAddressException e)
+            {
+                throw e;
+            }
+
+        }
+        public void AddCustomerMenu()
+        {
+            
+            try
+            {
+
+                _ = AddNewCustomer();
                 MainMenu();
                 
             }
@@ -107,14 +133,13 @@ namespace Project0.App
                 TryAgain(AddCustomerMenu);
             }
         }
-
-        public void SearchCustomerMenu()
-        {
+        public List<Customer> SearchCustomer() {
             Console.WriteLine("Enter name in fields that apply, if unknown, leave blank");
             Console.WriteLine("Enter First Name: ");
             string firstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name: ");
             string lastName = Console.ReadLine();
+
             try
             {
                 CustomerHandler ch = new CustomerHandler();
@@ -122,11 +147,31 @@ namespace Project0.App
                 if (c.Count > 0)
                 {
                     Console.WriteLine(c.Count + " customers found");
-                    foreach (Customer cust in c) 
+                    foreach (Customer cust in c)
                     {
-                        Console.WriteLine("Name: " + cust.FirstName + " " + cust.LastName + " City: "+ cust.CustAddress.City);
+                        Console.WriteLine("Name: " + cust.FirstName + " " + cust.LastName + " City: " + cust.CustAddress.City);
                     }
                 }
+                return c;
+            }
+            catch (CustomerException ex)
+            {
+
+                throw ex;
+
+            }
+            catch (NotImplementedException ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void SearchCustomerMenu()
+        {
+            
+            try
+            {
+                _ = SearchCustomer();
                 Console.WriteLine("[1] Back to main menu? \n[2] Customer Menu?\n[3] Exit?");
                 string input = Console.ReadLine();
                 switch (input)

@@ -87,6 +87,7 @@ namespace Project0.App
 
             OrderHandler oh = new OrderHandler();
             LocationHandler lh = new LocationHandler();
+            Customer c = new Customer();
             Console.WriteLine("New Customer? \n Y^(YES) N^(NO))");
             string input = Console.ReadLine();
 
@@ -94,9 +95,10 @@ namespace Project0.App
             { 
                 case "Y":
                     AdminCustomer ac = new AdminCustomer();
-                    ac.AddCustomerMenu();
+                    c = ac.AddNewCustomer();
                     break;
                 case "N":
+                    c = EnterCustomerDetails();
                     break;
                 default:
                     ErrorHandler err = new ErrorHandler();
@@ -104,7 +106,7 @@ namespace Project0.App
                     AddOrder();
                     break;
             }
-            Customer c = EnterCustomerDetails();
+            
             Location l = EnterLocationDetails();
             string choice;
             List<Inventory> custOrder = new List<Inventory>();
@@ -152,33 +154,31 @@ namespace Project0.App
                 i++;
             }
             string choice = Console.ReadLine();
-            return local[int.Parse(choice)];
+            try
+            {
+                return local[int.Parse(choice)];
+            }
+            catch (Exception)
+            {
+                ErrorHandler err = new ErrorHandler();
+                err.InvalidInputMsg();
+                EnterLocationDetails();
+                
+            }
+            return new Location();
+            
         }
 
         private Customer EnterCustomerDetails()
         {
             Console.WriteLine("Enter name in fields that apply, if unknown, leave blank");
-            Console.WriteLine("Enter First Name: ");
-            string firstName = Console.ReadLine();
-            Console.WriteLine("Enter Last Name: ");
-            string lastName = Console.ReadLine();
             try
             {
-                CustomerHandler ch = new CustomerHandler();
-                List<Customer> c = ch.Search(firstName, lastName);
-                int i = 0;
-                if (c.Count > 0)
-                {
-                    Console.WriteLine(c.Count + " customers found");
-                    foreach (Customer cust in c)
-                    {
-                        Console.WriteLine("["+i+"]"+"Name: " + cust.FirstName + " " + cust.LastName + " City: " + cust.CustAddress.City);
-                        i++;
-                    }
-                }
+                AdminCustomer ac = new AdminCustomer();
+                List<Customer> choices = ac.SearchCustomer();
                 Console.WriteLine("Choose customer");
                 string choice = Console.ReadLine();
-                return c[int.Parse(choice)];
+                return choices[int.Parse(choice)];
             }
             catch (CustomerException ex)
             {

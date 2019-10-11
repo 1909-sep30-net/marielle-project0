@@ -13,7 +13,6 @@ namespace Project0.DummyData
                 Author = "Jane Austen",
                 Title = "Pride and Prejudice",
                 Genre = "Romance",
-                Desc = "Fictional Book",
                 Price = 5,
                 Name = "Pride and Prejudice"
             },
@@ -21,7 +20,6 @@ namespace Project0.DummyData
                 Author = "Jane Austen",
                 Title = "Emma",
                 Genre = "Romance",
-                Desc = "Fictional Book",
                 Price = 5,
                 Name = "Emma"
             },
@@ -29,7 +27,6 @@ namespace Project0.DummyData
                 Author = "Jane Austen",
                 Title = "Persuasion",
                 Genre = "Romance",
-                Desc = "Fictional Book",
                 Price = 5,
                 Name = "Persuasion"
             },
@@ -37,7 +34,6 @@ namespace Project0.DummyData
                 Author = "Jane Austen",
                 Title = "Sense and Sensibility",
                 Genre = "Romance",
-                Desc = "Fictional Book",
                 Price = 5,
                 Name = "Sense and Sensibility"
             }

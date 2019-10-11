@@ -14,6 +14,5 @@ namespace Project0.BusinessLogic
         public double Price { get; set; }
         public string Name { get; set; }
 
-        public string Desc { get; set; }
     }
 }
