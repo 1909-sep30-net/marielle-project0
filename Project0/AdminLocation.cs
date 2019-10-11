@@ -41,11 +41,10 @@ namespace Project0.App
                     break;
             }
         }
-
+        
         private void ViewLocationInventory()
         {
             //code to View Inventory of Chosen Location
-            Console.WriteLine("Choose Branch");
             LocationHandler lh = new LocationHandler();
             List<Location> locations = lh.GetLocations();
             int i = 0;
@@ -54,12 +53,26 @@ namespace Project0.App
                 Console.WriteLine($"[{i}] {l.BranchName}");
                 i++;
             }
-            string input = Console.ReadLine();
-            List<Inventory> storeInventory = lh.GetInventory(locations[int.Parse(input)]);
-            foreach(Inventory inv in storeInventory) 
+            string input;
+            do
             {
-                Console.WriteLine("Product: " + inv.Prod.Name + " \n Stock: " + inv.Stock);
+                Console.WriteLine("Choose Branch");
+                input = Console.ReadLine();
+            } while (ErrorHandler.InvalidIntInput(input));
+            try
+            {
+                List<Inventory> storeInventory = lh.GetInventory(locations[int.Parse(input)]);
+                foreach (Inventory inv in storeInventory)
+                {
+                    Console.WriteLine("Product: " + inv.Prod.Name + " \n Stock: " + inv.Stock);
+                }
             }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+                ViewLocationInventory();
+            }
+            
 
         }
     }

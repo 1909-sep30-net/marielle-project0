@@ -9,9 +9,14 @@ namespace Project0.App
     {
         public void MainMenu()
         {
-            Console.WriteLine("Welcome to the Customer Records! \n What would you like to do?");
-            Console.WriteLine(" [1] Add Customers \n [2] Search Customers \n [3] Go back to Main Menu \n [4] Exit");
-            string input = Console.ReadLine();
+            string input;
+            do
+            {
+                Console.WriteLine("Welcome to the Customer Records! \n What would you like to do?");
+                Console.WriteLine(" [1] Add Customers \n [2] Search Customers \n [3] Go back to Main Menu \n [4] Exit");
+                input = Console.ReadLine();
+            } while (ErrorHandler.InvalidIntInput(input));
+
             switch (input)
             {
                 case "1":
@@ -105,10 +110,8 @@ namespace Project0.App
             
             try
             {
-
                 _ = AddNewCustomer();
                 MainMenu();
-                
             }
             catch (CustomerException ex)
             {
@@ -147,10 +150,16 @@ namespace Project0.App
                 if (c.Count > 0)
                 {
                     Console.WriteLine(c.Count + " customers found");
+                    int i = 0;
                     foreach (Customer cust in c)
                     {
-                        Console.WriteLine("Name: " + cust.FirstName + " " + cust.LastName + " City: " + cust.CustAddress.City);
+                        Console.WriteLine("[" + i + "] Name: " + cust.FirstName + " " + cust.LastName + " City: " + cust.CustAddress.City);
+                        i++;
                     }
+                }
+                else
+                {
+                    throw new CustomerNotFoundException("No customer found");
                 }
                 return c;
             }
@@ -164,6 +173,10 @@ namespace Project0.App
             {
                 throw ex;
             }
+            catch (CustomerNotFoundException ex)
+            {
+                throw ex;
+            }
         }
 
         public void SearchCustomerMenu()
@@ -172,8 +185,13 @@ namespace Project0.App
             try
             {
                 _ = SearchCustomer();
-                Console.WriteLine("[1] Back to main menu? \n[2] Customer Menu?\n[3] Exit?");
-                string input = Console.ReadLine();
+                string input;
+                do
+                {
+                    Console.WriteLine("[1] Back to main menu? \n[2] Customer Menu?\n[3] Exit?");
+                    input = Console.ReadLine();
+                } while (ErrorHandler.InvalidIntInput(input));
+                
                 switch (input)
                 {
                     case "1":
@@ -204,6 +222,11 @@ namespace Project0.App
 
             }
             catch (NotImplementedException ex) 
+            {
+                Console.WriteLine(ex.Message);
+                TryAgain(SearchCustomerMenu);
+            }
+            catch (CustomerNotFoundException ex)
             {
                 Console.WriteLine(ex.Message);
                 TryAgain(SearchCustomerMenu);

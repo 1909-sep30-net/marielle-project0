@@ -2,6 +2,7 @@
 using Project0.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Project0.App
 {
@@ -60,7 +61,7 @@ namespace Project0.App
                     
                 }
             }
-
+            Menu();
         }
 
         private void ViewCustomerOrderHistory()
@@ -79,6 +80,7 @@ namespace Project0.App
                 }
 
             }
+            Menu();
         }
 
         private void AddOrder()
@@ -112,22 +114,48 @@ namespace Project0.App
             List<Inventory> custOrder = new List<Inventory>();
             do
             {
-                Console.WriteLine("Choose Product to Order:");
-                List<Inventory> availInvent = lh.GetInventory(l);
+                Console.WriteLine("Choose Product to Order (Enter Index Number):");
+                List<Inventory> availInvent = lh.GetAvailInventory(l);
                 int j = 0;
                 foreach (Inventory i in availInvent) 
                 {
-                    Console.WriteLine("["+ j +"] " + " Name: "+i.Prod.Name + " Price: " + i.Prod.Price + " Remaining Stock" + i.Stock);
-                    j++;
+                   Console.WriteLine("["+ j +"] " + " Name: "+i.Prod.Name + "\n Price: " + i.Prod.Price + "\n Remaining Stock: " + i.Stock);
+                   j++;
                 }
                 input = Console.ReadLine();
                 Console.WriteLine("Enter Quantity: ");
                 string amount = Console.ReadLine();
-                custOrder.Add(new Inventory() { Prod = availInvent[int.Parse(input)].Prod, Stock = int.Parse(amount) }); 
-                lh.UpdateInventory(custOrder[custOrder.Count - 1], l);
+                try
+                {
+                    lh.UpdateInventory(new Inventory() { Prod = availInvent[int.Parse(input)].Prod, Stock = int.Parse(amount) }, l);
 
-                Console.WriteLine("Would you like to order another product? \n Y^(Yes) N^(No)");
-                choice = Console.ReadLine();
+                }
+                catch (InsufficientStockException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    choice = "";
+                    continue;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    choice = "";
+                    continue;
+                }
+                catch (IndexOutOfRangeException ex) 
+                {
+                    Console.WriteLine(ex.Message);
+                    choice = "";
+                    continue;
+                }
+                custOrder.Add(new Inventory() { Prod = availInvent[int.Parse(input)].Prod, Stock = int.Parse(amount) });
+                do
+                {
+                    Console.WriteLine("Would you like to order another product? \n N^(NO) Y^(YES)");
+                    choice = Console.ReadLine();
+
+                } while (ErrorHandler.InvalidInput(choice));
+                
 
             } while (choice != "N");
             Order o = new Order()
@@ -158,8 +186,9 @@ namespace Project0.App
             {
                 return local[int.Parse(choice)];
             }
-            catch (Exception)
+            catch (FormatException ex)
             {
+                Console.WriteLine(ex.Message);
                 ErrorHandler err = new ErrorHandler();
                 err.InvalidInputMsg();
                 EnterLocationDetails();
@@ -171,18 +200,22 @@ namespace Project0.App
 
         private Customer EnterCustomerDetails()
         {
-            Console.WriteLine("Enter name in fields that apply, if unknown, leave blank");
+            string choice;
             try
             {
                 AdminCustomer ac = new AdminCustomer();
                 List<Customer> choices = ac.SearchCustomer();
-                Console.WriteLine("Choose customer");
-                string choice = Console.ReadLine();
+                do
+                {
+                    Console.WriteLine("Choose customer ");
+                    choice = Console.ReadLine();
+
+                } while (ErrorHandler.InvalidIntInput(choice));
+                
                 return choices[int.Parse(choice)];
             }
             catch (CustomerException ex)
             {
-
                 Console.WriteLine(ex.Message);
                 EnterCustomerDetails();
             }
@@ -190,8 +223,42 @@ namespace Project0.App
             {
                 Console.WriteLine(ex.Message);
                 EnterCustomerDetails();
+            } catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+                EnterCustomerDetails();
             }
+            catch (CustomerNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Menu();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                string input;
+                do
+                {
+                    Console.WriteLine("Try Again? \n Y^(Yes) N^(No)");
+                    input = Console.ReadLine();
+
+                } while (ErrorHandler.InvalidInput(input));
+                switch (input)
+                {
+                    case "Y":
+                        EnterCustomerDetails();
+                        break;
+                    case "N":
+                        Menu();
+                        break;
+                    default:
+                        break;
+                }
+                
+            } 
             return new Customer();
         }
+
+        
     }
 }

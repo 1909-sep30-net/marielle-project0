@@ -23,7 +23,7 @@ namespace Project0.BusinessLogic
                 double total = 0;
                 foreach (Inventory i in CustOrder)
                 {
-                    total = i.Stock * i.Prod.Price;
+                    total += i.Stock * i.Prod.Price;
                 }
                 return total;
             }

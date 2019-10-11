@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Project0.App
 {
@@ -19,70 +20,26 @@ namespace Project0.App
             Console.WriteLine("Invalid Input");
             
         }
-        //public bool VerifyAddress(string street, string city, string state, string zipcode)
-        //{
-        //    ///<summary>
-        //    ///Verify address format
-        //    /// </summary>
-        //    return false;
-        //}
+        public static bool InvalidIntInput(string choice)
+        {
+            if (Regex.Match(choice, @"\s*\d\s*").Success) return false;
+            Console.WriteLine("Invalid Input");
+            return true;
+        }
 
-        //internal bool VerifyPassword(string password)
-        //{
-        //    switch (password)
-        //    {
-        //        case null:
-        //            return false;
-        //            break;
-        //        case " ":
-        //            return false;
-        //            break;
-        //        case "\n":
-        //            return false;
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //    return true;
-        //}
+        public static bool InvalidInput(string choice)
+        {
+            switch (choice)
+            {
+                case "Y":
+                    return false;
+                case "N":
+                    return false;
+                default:
+                    Console.WriteLine("Invalid input. Input must be integer");
+                    return true;
+            }
+        }
 
-        //internal bool VerifyName(string firstName, string lastName)
-        //{
-        //    switch (firstName)
-        //    {
-        //        case null:
-        //            return false;
-        //            break;
-        //        case " ":
-        //            return false;
-        //            break;
-        //        case "":
-        //            return false;
-        //            break;
-        //        case "\n":
-        //            return false;
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //    switch (lastName)
-        //    {
-        //        case null:
-        //            return false;
-        //            break;
-        //        case " ":
-        //            return false;
-        //            break;
-        //        case "":
-        //            return false;
-        //            break;
-        //        case "\n":
-        //            return false;
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //    return true;
-        //}
     }
 }
