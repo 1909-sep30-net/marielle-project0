@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Project0.BusinessLogic
 {
-     public class Order
+     public class Orders
     {
         private List<Inventory> custOrder;
         private Customer cust;

@@ -51,8 +51,8 @@ namespace Project0.App
             //code to view location history
             Location l = EnterLocationDetails();
             OrderHandler oh = new OrderHandler();
-            List<Order> history = oh.GetLocationHistory(l);
-            foreach(Order o in history)
+            List<Orders> history = oh.GetLocationHistory(l);
+            foreach(Orders o in history)
             {
                 Console.WriteLine(o.Date);
                 foreach(Inventory i in o.CustOrder)
@@ -69,8 +69,8 @@ namespace Project0.App
             //code to view customer history
             Customer c = EnterCustomerDetails();
             OrderHandler oh = new OrderHandler();
-            List<Order> history = oh.GetCustomerHistory(c);
-            foreach(Order o in history)
+            List<Orders> history = oh.GetCustomerHistory(c);
+            foreach(Orders o in history)
             {
                 Console.WriteLine(o.Date);
                 foreach(Inventory i in o.CustOrder)
@@ -158,7 +158,7 @@ namespace Project0.App
                 
 
             } while (choice != "N");
-            Order o = new Order()
+            Orders o = new Orders()
             {
                 Cust = c,
                 Stor = l,

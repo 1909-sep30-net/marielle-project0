@@ -48,28 +48,7 @@ namespace Project0.BusinessLogic
             } 
         }
         public Address CustAddress { get; set; }
-        //public string UserName {
-        //    get
-        //    {
-        //        return UserName;
-        //    }
-        //    set 
-        //    {
-        //        try
-        //        {
-        //            validate(value);
-        //            userName = value;
-
-        //        }
-        //        catch (CustomerException ex)
-        //        {
-
-        //            throw ex;
-        //        }
-                
-        //    } 
-        
-        //}
+    
         public int CustID { get; set; }
         private void validate(string s)
         {

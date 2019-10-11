@@ -11,35 +11,35 @@ namespace Project0.DataAccess
     public class OrderHandler
     {
         
-        public void AddOrder(Order o)
+        public void AddOrder(Orders o)
         {
             //code to add order in db
             //Adding order to dummy list
             DummyOrder.DOrder.Add(o);
         }
 
-        public List<Order> GetCustomerHistory(Customer c)
+        public List<Orders> GetCustomerHistory(Customer c)
         {
             //get customer order history
-            List<Order> output = new List<Order>();
-            foreach (Order o in DummyOrder.DOrder) 
+            List<Orders> output = new List<Orders>();
+            foreach (Orders o in DummyOrder.DOrder) 
             {
                 if (c.FirstName == o.Cust.FirstName && c.LastName == o.Cust.LastName) output.Add(o); 
             }
             return output;
         }
 
-        public List<Order> GetLocationHistory(Location l)
+        public List<Orders> GetLocationHistory(Location l)
         {
-            List<Order> output = new List<Order>();
-            foreach(Order o in DummyOrder.DOrder)
+            List<Orders> output = new List<Orders>();
+            foreach(Orders o in DummyOrder.DOrder)
             {
                 if (l.BranchName == o.Stor.BranchName) output.Add(o);
             }
             return output;
         }
 
-        public void PrintOrderDetails(Order o)
+        public void PrintOrderDetails(Orders o)
         {
             Console.WriteLine("Order placed!");
             Console.WriteLine($"Customer Name: {o.Cust.FirstName} {o.Cust.LastName} \nBranchname: {o.Stor.BranchName}");

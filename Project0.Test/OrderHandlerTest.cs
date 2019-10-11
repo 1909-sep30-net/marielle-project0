@@ -12,7 +12,7 @@ namespace Project0.Test
         [Fact]
         public void AddOrderShouldAddOrder()
         {
-            Order o = new Order() 
+            Orders o = new Orders() 
             {
                 Cust = new Customer(),
                 Stor = new Location(),
@@ -28,7 +28,7 @@ namespace Project0.Test
         public void GetCustomerHistoryShouldGetHistory()
         {
             OrderHandler oh = new OrderHandler();
-            Order o = new Order()
+            Orders o = new Orders()
             {
                 Cust = new Customer()
                 {
@@ -53,7 +53,7 @@ namespace Project0.Test
         public void GetLocationHistoryShouldReturnHistory()
         {
             OrderHandler oh = new OrderHandler();
-            Order o = new Order()
+            Orders o = new Orders()
             {
                 Cust = new Customer(),
                 Stor = new Location() { BranchName = "Flagship" },

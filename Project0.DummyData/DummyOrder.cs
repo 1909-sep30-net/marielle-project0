@@ -7,6 +7,6 @@ namespace Project0.DummyData
 {
     public class DummyOrder
     {
-        public static List<Order> DOrder = new List<Order>();
+        public static List<Orders> DOrder = new List<Orders>();
     }
 }
