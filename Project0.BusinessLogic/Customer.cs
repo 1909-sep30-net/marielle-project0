@@ -7,7 +7,6 @@ namespace Project0.BusinessLogic
     {
         private string firstName;
         private string lastName;
-        //public string userName;
         private Address custAddress;
         private int custID;
 
