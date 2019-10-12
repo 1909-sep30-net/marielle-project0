@@ -12,6 +12,7 @@ namespace Project0.DataAccess
     /// <summary>
     /// Handles the orders of the customer
     /// Gets orders and updates inventory
+    /// Connects program to database
     /// </summary>
     public class OrderHandler
     {
@@ -29,17 +30,17 @@ namespace Project0.DataAccess
         }
         public void AddOrder(BL.Orders o)
         {
+            using var context = GetContext();
             CustomerHandler ch = new CustomerHandler();
             LocationHandler lh = new LocationHandler();
             Orders order = new Orders()
             {
-                Cust = ch.ParseCustomer(o.Cust),
-                Location = lh.ParseLocation(o.Stor),
+                Cust = context.Customer.First(c => c.FirstName == o.Cust.FirstName && c.LastName == o.Cust.LastName),
+                Location = context.Location.First(l => l.BranchName == o.Stor.BranchName),
                 CustOrder = ParseCustOrder(o.CustOrder),
                 Total = o.Total,
                 OrderDate = DateTime.Now
             };
-            using var context = GetContext();
             context.Orders.Add(order);
             context.SaveChanges();
 
@@ -51,7 +52,7 @@ namespace Project0.DataAccess
             using var context = GetContext();
             CustomerHandler ch = new CustomerHandler();
             List<BL.Orders> output = new List<BL.Orders>();
-            List<Orders> dbOrd = context.Orders.Where(o => o.Cust == ch.ParseCustomer(c)).ToList();
+            List<Orders> dbOrd = context.Orders.Where(o => o.Cust.FirstName == c.FirstName && o.Cust.LastName == c.LastName).ToList();
             foreach (Orders o in dbOrd)
             {
                 output.Add(ParseOrder(o));
@@ -87,16 +88,13 @@ namespace Project0.DataAccess
         public ICollection<CustOrder> ParseCustOrder(List<BL.Inventory> custOrder)
         {
             ICollection<CustOrder> custOrd = new List<CustOrder>();
+            using var context = GetContext();
             foreach (BL.Inventory cu in custOrder)
             {
                 custOrd.Add(
                     new CustOrder()
                     {
-                        Product = new Product()
-                        {
-                            Name = cu.Prod.Name,
-                            Price = cu.Prod.Price
-                        },
+                        ProductId = context.Product.Single(p=> p.Name == cu.Prod.Name).ProductId,
                         Quantity = cu.Stock
                     }
                     );
@@ -105,14 +103,15 @@ namespace Project0.DataAccess
         }
         public BL.Orders ParseOrder(Orders o)
         {
+            using var context = GetContext();
             CustomerHandler ch = new CustomerHandler();
             LocationHandler lh = new LocationHandler();
             BL.Orders ord = new BL.Orders()
             {
                 Date = o.OrderDate,
-                Cust = ch.ParseCustomer(o.Cust),
-                Stor = lh.ParseLocation(o.Location),
-                CustOrder = ParseCustOrder(o.CustOrder),
+                Cust = ch.ParseCustomer(context.Customer.Single(c => c.CustId == o.CustId)),
+                Stor = lh.ParseLocation(context.Location.Single(l => l.LocationId == o.LocationId)),
+                CustOrder = ParseCustOrder(context.CustOrder.Where(c => c.OrderId == o.OrderId).ToList()),
                 Total = o.Total,
             };
             return ord;
@@ -121,10 +120,12 @@ namespace Project0.DataAccess
 
         private List<BL.Inventory> ParseCustOrder(ICollection<CustOrder> custOrder)
         {
+            using var context = GetContext();
+            LocationHandler lh = new LocationHandler();
             List<BL.Inventory> custOrd = new List<BL.Inventory>();
             foreach (CustOrder cu in custOrder)
             {
-                custOrd.Add(new BL.Inventory() { Prod = new BL.Product() { Name = cu.Product.Name, Price = cu.Product.Price }, Stock = cu.Quantity });
+                custOrd.Add(new BL.Inventory() { Prod = lh.ParseProduct(context.Product.Single(p => p.ProductId == cu.ProductId)), Stock = cu.Quantity });
             }
             return custOrd;
         }

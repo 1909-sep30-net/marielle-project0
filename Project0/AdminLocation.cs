@@ -66,6 +66,7 @@ namespace Project0.App
                 {
                     Console.WriteLine("Product: " + inv.Prod.Name + " \n Stock: " + inv.Stock);
                 }
+                Menu();
             }
             catch (IndexOutOfRangeException ex)
             {

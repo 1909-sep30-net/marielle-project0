@@ -54,16 +54,14 @@ namespace Project0.DataAccess
         public void UpdateInventory(BL.Inventory inv, BL.Location local)
         {
             //updates store inventory and also rejects orders with too high quantity
-            Location l = ParseLocation(local);
-            Inventory invent = ParseInventory(inv);
             using var context = GetContext();
-            List<Inventory> tocheck = context.Inventory.Where(i => i.Location.BranchName == l.BranchName).ToList();
+            List<Inventory> tocheck = context.Inventory.Where(i => i.LocationId == context.Location.Single(l => l.BranchName == local.BranchName).LocationId).ToList();
             foreach (Inventory item in tocheck)
             {
-                if (item.Product.Name == invent.Product.Name)
+                if (item.ProductId == context.Product.First(p => p.Name == inv.Prod.Name).ProductId)
                 {
-                    if (invent.Stock > item.Stock) throw new InsufficientStockException("Stock Insufficient");
-                    item.Stock = item.Stock - invent.Stock;
+                    if (inv.Stock > item.Stock) throw new InsufficientStockException("Stock Insufficient");
+                    item.Stock = item.Stock - inv.Stock;
                 }
             }
             context.SaveChanges();
@@ -112,27 +110,32 @@ namespace Project0.DataAccess
 
         private BL.Inventory ParseInventory(Inventory inventory)
         {
-            BL.Inventory i = new BL.Inventory
+            using var context = GetContext();
+            BL.Inventory i = new BL.Inventory()
             {
                 Stock = inventory.Stock,
-                Prod = new BL.Product()
-                {
-                    Name = inventory.Product.Name,
-                    Price = inventory.Product.Price
-                }
+                Prod = ParseProduct(context.Product.Single(p => p.ProductId == inventory.ProductId))
             };
             return i;
         }
+
+        public BL.Product ParseProduct(Product product)
+        {
+            BL.Product p = new BL.Product() 
+            { 
+                Name = product.Name,
+                Price = product.Price
+            };
+            return p;
+        }
+
         private Inventory ParseInventory(BL.Inventory inventory)
         {
+            using var context = GetContext();
             Inventory i = new Inventory
             {
                 Stock = inventory.Stock,
-                Product = new Product()
-                {
-                    Name = inventory.Prod.Name,
-                    Price = inventory.Prod.Price
-                }
+                Product = context.Product.First(p => p.Name == inventory.Prod.Name)
             };
             return i;
         }

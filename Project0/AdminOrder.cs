@@ -142,7 +142,7 @@ namespace Project0.App
                     choice = "";
                     continue;
                 }
-                catch (IndexOutOfRangeException ex) 
+                catch (ArgumentOutOfRangeException ex) 
                 {
                     Console.WriteLine(ex.Message);
                     choice = "";

@@ -23,7 +23,7 @@ namespace Project0.App
         public static bool InvalidIntInput(string choice)
         {
             if (Regex.Match(choice, @"\s*\d\s*").Success) return false;
-            Console.WriteLine("Invalid Input");
+            Console.WriteLine("Invalid Input. Input must be integer");
             return true;
         }
 
@@ -36,7 +36,7 @@ namespace Project0.App
                 case "N":
                     return false;
                 default:
-                    Console.WriteLine("Invalid input. Input must be integer");
+                    Console.WriteLine("Invalid input.");
                     return true;
             }
         }
