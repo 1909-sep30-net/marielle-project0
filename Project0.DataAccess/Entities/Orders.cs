@@ -11,7 +11,7 @@ namespace Project0.DataAccess.Entities
         }
 
         public int OrderId { get; set; }
-        public int Total { get; set; }
+        public decimal Total { get; set; }
         public int? CustId { get; set; }
         public int? LocationId { get; set; }
         public DateTime OrderDate { get; set; }

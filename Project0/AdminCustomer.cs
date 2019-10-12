@@ -188,7 +188,7 @@ namespace Project0.App
                 string input;
                 do
                 {
-                    Console.WriteLine("[1] Back to main menu? \n[2] Customer Menu?\n[3] Exit?");
+                    Console.WriteLine("Where would you like to go? \n [1] Back to main menu? \n [2] Customer Menu?\n [3] Exit?");
                     input = Console.ReadLine();
                 } while (ErrorHandler.InvalidIntInput(input));
                 

@@ -11,22 +11,19 @@ namespace Project0.BusinessLogic
         private string street, city;
         private States state;
         private int zipcode;
-        public string Street 
+        public string Street
         {
-            get 
-            {
-                return Street;
-            }
+            get => street;
 
-            set 
+            set
             {
                 if (Regex.Match(value, @"\d+\s[A-z0-9]+?(\s[A-z])*").Success) street = value;
-                else 
+                else
                 {
                     throw new InvalidAddressException("Invalid Street");
                 }
             }
-                
+
         }
         public string City 
         {

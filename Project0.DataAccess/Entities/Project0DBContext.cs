@@ -22,7 +22,7 @@ namespace Project0.DataAccess.Entities
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Product> Product { get; set; }
 
-
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,19 +38,19 @@ namespace Project0.DataAccess.Entities
                     .WithMany(p => p.CustOrder)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CustOrder__Order__571DF1D5");
+                    .HasConstraintName("FK__CustOrder__Order__693CA210");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.CustOrder)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CustOrder__Produ__5812160E");
+                    .HasConstraintName("FK__CustOrder__Produ__6A30C649");
             });
 
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(e => e.CustId)
-                    .HasName("PK__Customer__049E3A89BADA0DE4");
+                    .HasName("PK__Customer__049E3A895F08438E");
 
                 entity.Property(e => e.CustId).HasColumnName("CustID");
 
@@ -90,13 +90,13 @@ namespace Project0.DataAccess.Entities
                 entity.HasOne(d => d.Location)
                     .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.LocationId)
-                    .HasConstraintName("FK__Inventory__Locat__5441852A");
+                    .HasConstraintName("FK__Inventory__Locat__66603565");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Produ__534D60F1");
+                    .HasConstraintName("FK__Inventory__Produ__656C112C");
             });
 
             modelBuilder.Entity<Location>(entity =>
@@ -127,7 +127,7 @@ namespace Project0.DataAccess.Entities
             modelBuilder.Entity<Orders>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Orders__C3905BAF69989545");
+                    .HasName("PK__Orders__C3905BAF69C92E41");
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
@@ -137,15 +137,17 @@ namespace Project0.DataAccess.Entities
 
                 entity.Property(e => e.OrderDate).HasColumnType("datetime");
 
+                entity.Property(e => e.Total).HasColumnType("money");
+
                 entity.HasOne(d => d.Cust)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustId)
-                    .HasConstraintName("FK__Orders__CustID__4F7CD00D");
+                    .HasConstraintName("FK__Orders__CustID__5FB337D6");
 
                 entity.HasOne(d => d.Location)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.LocationId)
-                    .HasConstraintName("FK__Orders__Location__5070F446");
+                    .HasConstraintName("FK__Orders__Location__60A75C0F");
             });
 
             modelBuilder.Entity<Product>(entity =>

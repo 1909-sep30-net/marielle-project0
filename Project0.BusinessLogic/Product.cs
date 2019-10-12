@@ -6,12 +6,12 @@ namespace Project0.BusinessLogic
 {
     public class Product
     {
-        private double price;
+        private decimal price;
         private string name;
         private string desc;
         private int productID;
 
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public string Name { get; set; }
 
     }

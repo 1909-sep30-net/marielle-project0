@@ -2,57 +2,103 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using Project0.BusinessLogic;
+using Microsoft.EntityFrameworkCore;
+using BL = Project0.BusinessLogic;
+using Project0.DataAccess.Entities;
 using Project0.DummyData;
+using Microsoft.Extensions.Logging;
 
 namespace Project0.DataAccess
 {
     public class CustomerHandler
     {
-        public void AddCustomer(Customer c)
+        private readonly ILoggerFactory AppLoggerFactory;
+
+        public Customer ParseCustomer(BL.Customer c)
+        {
+            Customer cust = new Customer()
+            {
+                FirstName = c.FirstName,
+                LastName = c.LastName,
+                Street = c.CustAddress.Street,
+                City = c.CustAddress.City,
+                State = c.CustAddress.State.ToString(),
+                ZipCode = c.CustAddress.Zipcode.ToString()
+            };
+
+            return cust;
+        }
+        public BL.Customer ParseCustomer(Customer c)
+        {
+            BL.Customer cust = new BL.Customer()
+            {
+                FirstName = c.FirstName,
+                LastName = c.LastName,
+                CustAddress = new BL.Address()
+                {
+                    Street = c.Street,
+                    City = c.City,
+                    State = (BL.States)Enum.Parse(typeof(BL.States), c.State, true),
+                    Zipcode = int.Parse(c.ZipCode)
+                }
+            };
+
+            return cust;
+        }
+        public Project0DBContext GetContext()
+        {
+            string connectionString = SecretConfiguration.ConnectionString;
+
+            DbContextOptions<Project0DBContext> options = new DbContextOptionsBuilder<Project0DBContext>()
+                .UseSqlServer(connectionString)
+                .UseLoggerFactory(AppLoggerFactory).Options;
+
+            return new Project0DBContext(options);
+        }
+
+        public void AddCustomer(BL.Customer c)
         {
             //Code to add customer to database
-            DummyCustomer.DCustomer.Add(c);
-            
+            using var context = GetContext();
+            Customer cust = ParseCustomer(c);
+            context.Customer.Add(cust);
+            context.SaveChanges();
+
+
         }
 
-        public int GetCustomerID()
-        {
-            //code to get customer ID from DB;
-            return 0;
-        }
-
-        public List<Customer> Search(string firstName, string lastName)
+        public List<BL.Customer> Search(string firstName, string lastName)
         {
             //generate code that searches db by name
-            List<Customer> customerFound = new List<Customer>();
+            List<BL.Customer> customerFound = new List<BL.Customer>();
+            using var context = GetContext();
             switch (Validate(firstName, lastName))
             {
                 case 0:
-                    throw new CustomerException("Invalid name");
-                    
+                    throw new BL.CustomerException("Invalid name");
+
                 case 1:
                     //first name valid, last name unknown
-                    foreach (Customer c in DummyCustomer.DCustomer) 
+                    foreach (Customer c in context.Customer)
                     {
-                        if (c.FirstName == firstName) customerFound.Add(c);
+                        if (c.FirstName == firstName) customerFound.Add(ParseCustomer(c));
                     }
-                    if(customerFound == null) throw CustomerNotFoundException("Customer not found");
+                    if (customerFound == null) throw CustomerNotFoundException("Customer not found");
                     break;
 
                 case 2:
                     //last name valid, first name unknown
-                    foreach (Customer c in DummyCustomer.DCustomer)
+                    foreach (Customer c in context.Customer)
                     {
-                        if (c.LastName == lastName) customerFound.Add(c);
+                        if (c.LastName == lastName) customerFound.Add(ParseCustomer(c));
                     }
                     if (customerFound == null) throw CustomerNotFoundException("Customer not found");
                     break;
 
                 case 3:
-                    foreach (Customer c in DummyCustomer.DCustomer)
+                    foreach (Customer c in context.Customer)
                     {
-                        if (c.LastName == lastName && c.FirstName == firstName) customerFound.Add(c);
+                        if (c.LastName == lastName && c.FirstName == firstName) customerFound.Add(ParseCustomer(c));
                     }
                     if (customerFound == null) throw CustomerNotFoundException("Customer not found");
                     break;
@@ -74,7 +120,7 @@ namespace Project0.DataAccess
             if (Regex.Match(firstName, @"\s*[A-z]\s*").Success) fName++;
             if (Regex.Match(lastName, @"\s*[A-z]\s*").Success) lName = lName + 2;
             return lName + fName;
-            
+
         }
     }
 }

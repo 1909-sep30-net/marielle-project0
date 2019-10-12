@@ -10,22 +10,29 @@ namespace Project0.BusinessLogic
         private Customer cust;
         private Location stor;
         private DateTime date;
+        private decimal total;
     
         public List<Inventory> CustOrder { get; set; }
         public Customer Cust { get; set; }
         public Location Stor { get; set; }
 
         public DateTime Date { get; set; }
-        public double Total
+        public decimal Total
         {
             get
             {
-                double total = 0;
                 foreach (Inventory i in CustOrder)
                 {
                     total += i.Stock * i.Prod.Price;
                 }
                 return total;
+            }
+            set
+            {
+                foreach (Inventory i in CustOrder)
+                {
+                    total += i.Stock * i.Prod.Price;
+                }
             }
         }
 
