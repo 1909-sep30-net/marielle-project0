@@ -12,6 +12,7 @@ namespace Project0.DataAccess
     /// Handles the orders of the customer
     /// Gets orders and updates inventory
     /// Connects program to database
+    /// Converts the DB versions of the Orders to the Business Logic Versions and Vice versa
     /// </summary>
     public class OrderHandler
     {

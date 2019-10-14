@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Project0.App
-{
+{/// <summary>
+/// Exit option of program
+/// </summary>
     class ExitMenu
     {
         public void Exit()

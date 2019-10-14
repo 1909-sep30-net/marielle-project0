@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Project0.BusinessLogic
-{
+{/// <summary>
+/// Product format of program
+/// UI interacts with this format of the Product
+/// </summary>
     public class Product
     {
         private decimal price;

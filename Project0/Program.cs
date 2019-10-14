@@ -1,17 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Project0.App;
-using Project0.DataAccess.Entities;
-using System;
+﻿using Project0.App;
 using Serilog;
 
 namespace Project0
 {
-    class Program
-    {
-        private static readonly ILoggerFactory AppLoggerFactory;
-
-        static void Main(string[] args)
+    internal class Program
+    {/// <summary>
+    /// Main Program that calls the head node that starts up the navigation throughout the program
+    /// </summary>
+    /// <param name="args"></param>
+        private static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration().WriteTo.File(@"C:\revature\marielle-project0\Project0-Log\Log.txt").CreateLogger();
             AdminMenu begin = new AdminMenu();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,9 +10,7 @@ namespace Project0.App
     /// This handles input errors and before the data handling
     ///
     /// </summary>
-    /// <remarks>
-    /// need to add logging feature
-    /// </remarks>
+
     class ErrorHandler
     {
         public void InvalidInputMsg()
@@ -24,6 +23,7 @@ namespace Project0.App
         {
             if (Regex.Match(choice, @"\s*\d\s*").Success) return false;
             Console.WriteLine("Invalid Input. Input must be integer");
+            Log.Error("Invalid Input. Input must be integer");
             return true;
         }
 
@@ -37,6 +37,7 @@ namespace Project0.App
                     return false;
                 default:
                     Console.WriteLine("Invalid input.");
+                    Log.Error("Invalid Input");
                     return true;
             }
         }

@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using Microsoft.EntityFrameworkCore;
-using BL = Project0.BusinessLogic;
-using Project0.DataAccess.Entities;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Project0.DataAccess.Entities;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using BL = Project0.BusinessLogic;
 
 namespace Project0.DataAccess
-{
+{/// <summary>
+/// This class connects the DB versions of the Customer class to Business Logic versions of the Customer Class and vice versa
+/// Accesses the DB
+/// </summary>
     public class CustomerHandler
     {
         private readonly ILoggerFactory AppLoggerFactory;
@@ -27,6 +29,7 @@ namespace Project0.DataAccess
 
             return cust;
         }
+
         public BL.Customer ParseCustomer(Customer c)
         {
             BL.Customer cust = new BL.Customer()
@@ -44,6 +47,7 @@ namespace Project0.DataAccess
 
             return cust;
         }
+
         public Project0DBContext GetContext()
         {
             string connectionString = SecretConfiguration.ConnectionString;
@@ -62,8 +66,6 @@ namespace Project0.DataAccess
             Customer cust = ParseCustomer(c);
             context.Customer.Add(cust);
             context.SaveChanges();
-
-
         }
 
         public List<BL.Customer> Search(string firstName, string lastName)
@@ -119,7 +121,6 @@ namespace Project0.DataAccess
             if (Regex.Match(firstName, @"\s*[A-z]\s*").Success) fName++;
             if (Regex.Match(lastName, @"\s*[A-z]\s*").Success) lName = lName + 2;
             return lName + fName;
-
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Project0.BusinessLogic
-{
+{/// <summary>
+/// Location format of the program
+/// UI interacts with this format of location
+/// </summary>
     public class Location
     {
         private Address storeAddress;
@@ -14,9 +15,9 @@ namespace Project0.BusinessLogic
         public Address StoreAddress { get; set; }
         public List<Inventory> StoreInventory { get; set; }
 
-        public string BranchName 
-        { 
-            get => branchName; 
+        public string BranchName
+        {
+            get => branchName;
             set
             {
                 if (Regex.Match(value, @"\s*[A-z0-9]+\s*").Success) branchName = value;

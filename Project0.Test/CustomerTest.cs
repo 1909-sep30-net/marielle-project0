@@ -1,6 +1,6 @@
-using System;
-using Xunit;
 using Project0.BusinessLogic;
+using Xunit;
+
 namespace Project0.Test
 {
     public class CustomerTest
@@ -8,7 +8,6 @@ namespace Project0.Test
         [Fact]
         public void CustomerShouldValidateStrings()
         {
-            
             try
             {
                 Customer c = new Customer()
@@ -21,11 +20,8 @@ namespace Project0.Test
             }
             catch (CustomerException ex)
             {
-
                 Assert.True(true);
             }
-
-            
         }
     }
 }

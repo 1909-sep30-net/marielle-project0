@@ -2,7 +2,9 @@
 using System.Runtime.Serialization;
 
 namespace Project0.BusinessLogic
-{
+{/// <summary>
+/// Exception for invalid Address Format
+/// </summary>
     [Serializable]
     public class InvalidAddressException : Exception
     {

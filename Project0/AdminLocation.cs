@@ -1,5 +1,6 @@
 ﻿using Project0.BusinessLogic;
 using Project0.DataAccess;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -71,6 +72,7 @@ namespace Project0.App
             catch (IndexOutOfRangeException ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex.Message);
                 ViewLocationInventory();
             }
             

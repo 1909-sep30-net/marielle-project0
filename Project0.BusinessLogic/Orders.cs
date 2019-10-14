@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Project0.BusinessLogic
-{
+{/// <summary>
+/// Order format of the program
+/// UI interacts with this format of the Order
+/// </summary>
      public class Orders
     {
         private List<Inventory> custOrder;

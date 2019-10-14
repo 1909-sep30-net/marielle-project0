@@ -1,10 +1,13 @@
 ﻿using Project0.BusinessLogic;
 using Project0.DataAccess;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
 namespace Project0.App
-{
+{/// <summary>
+/// UI for Customer Operations
+/// </summary>
     public class AdminCustomer
     {
         public void MainMenu()
@@ -40,6 +43,7 @@ namespace Project0.App
                     //error handling
                     ErrorHandler err = new ErrorHandler();
                     err.InvalidInputMsg();
+                    Log.Error("Invalid Input");
                     MainMenu();
                     break;
             }
@@ -84,6 +88,7 @@ namespace Project0.App
                 CustomerHandler ch = new CustomerHandler();
                 ch.AddCustomer(c);
                 Console.WriteLine("Customer added!");
+                Log.Information("Customer Added");
                 return c;
 
             }
@@ -111,28 +116,33 @@ namespace Project0.App
             try
             {
                 _ = AddNewCustomer();
+                
                 MainMenu();
             }
             catch (CustomerException ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex.Message);
                 TryAgain(AddCustomerMenu);
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Invalid State");
+                Log.Error(e.Message);
                 TryAgain(AddCustomerMenu);
             }
             catch (FormatException e)
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Invalid Zipcode");
+                Log.Error(e.Message);
                 TryAgain(AddCustomerMenu);
             }
             catch (InvalidAddressException e)
             {
                 Console.WriteLine(e.Message);
+                Log.Error(e.Message);
                 TryAgain(AddCustomerMenu);
             }
         }
@@ -208,6 +218,7 @@ namespace Project0.App
                     default:
                         ErrorHandler err = new ErrorHandler();
                         err.InvalidInputMsg();
+                        Log.Error("Invalid Input");
                         ExitMenu ex = new ExitMenu();
                         ex.Exit();
                         break;
@@ -218,17 +229,20 @@ namespace Project0.App
             {
 
                 Console.WriteLine(ex.Message);
+                Log.Error(ex.Message);
                 TryAgain(SearchCustomerMenu);
 
             }
             catch (NotImplementedException ex) 
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex.Message);
                 TryAgain(SearchCustomerMenu);
             }
             catch (CustomerNotFoundException ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex.Message);
                 TryAgain(SearchCustomerMenu);
             }
         }
@@ -248,6 +262,7 @@ namespace Project0.App
                     break;
                 default:
                     Console.WriteLine("Invalid input");
+                    Log.Error("Invalid Input");
                     TryAgain(last);
                     break;
             }

@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Project0.App
-{
+{/// <summary>
+/// Main Menu
+/// Root node of program navigation
+/// </summary>
     class AdminMenu
     {
         public void Welcome() 
@@ -38,6 +42,7 @@ namespace Project0.App
                     //error handler
                     ErrorHandler err = new ErrorHandler();
                     err.InvalidInputMsg();
+                    Log.Error("Invalid Input.");
                     Welcome();
                     break;
             }

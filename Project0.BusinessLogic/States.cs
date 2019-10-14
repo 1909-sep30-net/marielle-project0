@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Text;
 
 namespace Project0.BusinessLogic
-{
-    //Original code for the state enum can be found in https://gist.github.com/jabez007/4f15496af540a68fdb3449cd928cfc6b
+{/// <summary>
+/// States enum used in Address Class
+/// Original code for the state enum can be found in https://gist.github.com/jabez007/4f15496af540a68fdb3449cd928cfc6b
+/// </summary>
     public enum States
     {
         [Description("Alabama")]

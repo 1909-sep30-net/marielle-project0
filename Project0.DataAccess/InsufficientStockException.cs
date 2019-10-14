@@ -2,7 +2,9 @@
 using System.Runtime.Serialization;
 
 namespace Project0.DataAccess
-{
+{/// <summary>
+/// Exception for Customer ordering than what is available in DB
+/// </summary>
     [Serializable]
     public class InsufficientStockException : Exception
     {
