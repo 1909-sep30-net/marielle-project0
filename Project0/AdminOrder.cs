@@ -80,6 +80,7 @@ namespace Project0.App
             Log.Information($"View Order History of {c.FirstName} {c.LastName}");
             Menu();
         }
+
         /// <summary>
         /// Method that prints Order History based on conditions inputted by user
         /// </summary>
@@ -127,6 +128,7 @@ namespace Project0.App
                     case "4":
                         history = oh.MostExpensiveFirst(history);
                         return history;
+
                     default:
                         Console.WriteLine("Invalid Input");
                         Log.Error("Invalid Input");
