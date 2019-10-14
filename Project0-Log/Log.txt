@@ -1,1 +1,6 @@
-2019-10-13 18:20:50.720 -05:00 [INF] it worked
+2019-10-14 14:39:44.873 -05:00 [INF] Begin Program
+2019-10-14 14:39:53.741 -05:00 [ERR] No customer found
+2019-10-14 14:40:01.519 -05:00 [INF] Exit Program
+2019-10-14 14:53:06.124 -05:00 [INF] Begin Program
+2019-10-14 14:53:21.752 -05:00 [INF] View Order History of Flagship
+2019-10-14 14:53:29.575 -05:00 [INF] Exit Program

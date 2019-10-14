@@ -20,8 +20,9 @@ namespace Project0.BusinessLogic
             get => branchName;
             set
             {
-                if (Regex.Match(value, @"\s*[A-z0-9]+\s*").Success) branchName = value;
-                else throw new InvalidLocationExceptio("Invalid Branch Name");
+                if (value == null) throw new InvalidLocationException("Invalid Branch Name");
+                else if (Regex.Match(value, @"\s*[A-z0-9]+\s*").Success) branchName = value;
+                else throw new InvalidLocationException("Invalid Branch Name");
             }
         }
     }

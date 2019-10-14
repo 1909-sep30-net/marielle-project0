@@ -11,6 +11,7 @@ namespace Project0
         private static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration().WriteTo.File(@"C:\revature\marielle-project0\Project0-Log\Log.txt").CreateLogger();
+            Log.Information("Begin Program");
             AdminMenu begin = new AdminMenu();
             begin.Welcome();
         }

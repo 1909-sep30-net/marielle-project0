@@ -67,6 +67,7 @@ namespace Project0.App
                 {
                     Console.WriteLine("Product: " + inv.Prod.Name + " \n Stock: " + inv.Stock);
                 }
+                Log.Information($"Viewed inventory of {locations[int.Parse(input)].BranchName}");
                 Menu();
             }
             catch (IndexOutOfRangeException ex)

@@ -15,7 +15,6 @@ namespace Project0.BusinessLogic
             get => stock;
             set 
             {
-                if (value < 1) throw new InvalidStockException("Invalid Quantity. Please input quantity greater than 0");
                 stock = value;
             } 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,6 +19,7 @@ namespace Project0.App
                 case "N":
                     break;
                 case "Y":
+                    Log.Information("Exit Program");
                     System.Environment.Exit(1);
                     break;
                 default:

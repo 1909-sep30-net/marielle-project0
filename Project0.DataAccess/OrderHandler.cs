@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using BL = Project0.BusinessLogic;
+﻿using Microsoft.EntityFrameworkCore;
 using Project0.DataAccess.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using BL = Project0.BusinessLogic;
 
 namespace Project0.DataAccess
 {
@@ -16,18 +15,17 @@ namespace Project0.DataAccess
     /// </summary>
     public class OrderHandler
     {
-        private readonly ILoggerFactory AppLoggerFactory;
-
         public Project0DBContext GetContext()
         {
             string connectionString = SecretConfiguration.ConnectionString;
 
             DbContextOptions<Project0DBContext> options = new DbContextOptionsBuilder<Project0DBContext>()
                 .UseSqlServer(connectionString)
-                .UseLoggerFactory(AppLoggerFactory).Options;
+                .UseLoggerFactory(SQLLogger.AppLoggerFactory).Options;
 
             return new Project0DBContext(options);
         }
+
         public void AddOrder(BL.Orders o)
         {
             using var context = GetContext();
@@ -43,7 +41,6 @@ namespace Project0.DataAccess
             };
             context.Orders.Add(order);
             context.SaveChanges();
-
         }
 
         public List<BL.Orders> GetCustomerHistory(BL.Customer c)
@@ -79,10 +76,8 @@ namespace Project0.DataAccess
             foreach (BL.Inventory i in o.CustOrder)
             {
                 Console.WriteLine($"Product: {i.Prod.Name} \n Price (per unit): {i.Prod.Price} \n Quantity: {i.Stock}");
-
             }
             Console.WriteLine($"Order Total: {o.Total}");
-
         }
 
         public ICollection<CustOrder> ParseCustOrder(List<BL.Inventory> custOrder)
@@ -94,13 +89,14 @@ namespace Project0.DataAccess
                 custOrd.Add(
                     new CustOrder()
                     {
-                        ProductId = context.Product.Single(p=> p.Name == cu.Prod.Name).ProductId,
+                        ProductId = context.Product.Single(p => p.Name == cu.Prod.Name).ProductId,
                         Quantity = cu.Stock
                     }
                     );
             }
             return custOrd;
         }
+
         public BL.Orders ParseOrder(Orders o)
         {
             using var context = GetContext();
@@ -117,7 +113,6 @@ namespace Project0.DataAccess
             return ord;
         }
 
-
         private List<BL.Inventory> ParseCustOrder(ICollection<CustOrder> custOrder)
         {
             using var context = GetContext();
@@ -129,7 +124,5 @@ namespace Project0.DataAccess
             }
             return custOrd;
         }
-
-
     }
 }

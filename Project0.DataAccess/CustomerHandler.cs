@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Project0.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,8 +12,6 @@ namespace Project0.DataAccess
 /// </summary>
     public class CustomerHandler
     {
-        private readonly ILoggerFactory AppLoggerFactory;
-
         public Customer ParseCustomer(BL.Customer c)
         {
             Customer cust = new Customer()
@@ -54,7 +51,7 @@ namespace Project0.DataAccess
 
             DbContextOptions<Project0DBContext> options = new DbContextOptionsBuilder<Project0DBContext>()
                 .UseSqlServer(connectionString)
-                .UseLoggerFactory(AppLoggerFactory).Options;
+                .UseLoggerFactory(SQLLogger.AppLoggerFactory).Options;
 
             return new Project0DBContext(options);
         }

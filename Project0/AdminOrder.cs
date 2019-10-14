@@ -67,6 +67,7 @@ namespace Project0.App
                     Console.WriteLine(" Product: " + i.Prod.Name + " \n Quantity: " + i.Stock);
                 }
             }
+            Log.Information($"View Order History of {l.BranchName}");
             Menu();
         }
 
@@ -84,6 +85,7 @@ namespace Project0.App
                     Console.WriteLine(" Product: " + i.Prod.Name + "\n Quantity: " + i.Stock);
                 }
             }
+            Log.Information($"View Order History of {c.FirstName} {c.LastName}");
             Menu();
         }
 
@@ -180,6 +182,7 @@ namespace Project0.App
             oh.AddOrder(o);
             oh.PrintOrderDetails(o);
             Log.Information("Order Added");
+            Log.Information($"Order was made by customer {c.FirstName} {c.LastName} at {l.BranchName} store");
             Menu();
         }
 

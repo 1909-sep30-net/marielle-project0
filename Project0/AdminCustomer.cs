@@ -88,7 +88,7 @@ namespace Project0.App
                 CustomerHandler ch = new CustomerHandler();
                 ch.AddCustomer(c);
                 Console.WriteLine("Customer added!");
-                Log.Information("Customer Added");
+                Log.Information($"Customer {firstName} {lastName} added");
                 return c;
 
             }
@@ -157,6 +157,7 @@ namespace Project0.App
             {
                 CustomerHandler ch = new CustomerHandler();
                 List<Customer> c = ch.Search(firstName, lastName);
+                Log.Information($"Search customer with name: {firstName} {lastName}");
                 if (c.Count > 0)
                 {
                     Console.WriteLine(c.Count + " customers found");
@@ -166,6 +167,7 @@ namespace Project0.App
                         Console.WriteLine("[" + i + "] Name: " + cust.FirstName + " " + cust.LastName + " City: " + cust.CustAddress.City);
                         i++;
                     }
+                    Log.Information(c.Count + " customers found");
                 }
                 else
                 {
