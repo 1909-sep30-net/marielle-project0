@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using BL = Project0.BusinessLogic;
-using Project0.DummyData;
 using Project0.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
