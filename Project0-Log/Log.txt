@@ -16,3 +16,5 @@
 2019-10-14 18:28:09.764 -05:00 [INF] View Order History of Marielle Nolasco
 2019-10-14 18:28:36.409 -05:00 [INF] View Order History of Flagship
 2019-10-14 18:28:47.951 -05:00 [INF] Exit Program
+2019-10-14 18:33:55.150 -05:00 [INF] Begin Program
+2019-10-14 18:34:12.651 -05:00 [INF] View Order History of Flagship

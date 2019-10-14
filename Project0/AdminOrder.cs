@@ -108,7 +108,7 @@ namespace Project0.App
             do
             {
                 Console.WriteLine("How would you like the order history to be ordered?");
-                Console.WriteLine(" [1] Earliest First\n [2] Latest First \n [3] Cheapest First \n [4] Most Expensive First");
+                Console.WriteLine(" [1] Earliest First (Default) \n [2] Latest First \n [3] Cheapest First \n [4] Most Expensive First ");
                 string input = Console.ReadLine();
                 switch (input)
                 {
@@ -127,16 +127,17 @@ namespace Project0.App
                     case "4":
                         history = oh.MostExpensiveFirst(history);
                         return history;
-
                     default:
-                        Console.WriteLine("invalid input");
+                        Console.WriteLine("Invalid Input");
                         Log.Error("Invalid Input");
                         break;
                 }
             } while (true);
         }
 
-        ///<summary>Method to place order by passing business logic order object to data handler</summary>
+        ///<summary>
+        ///Method to place order by passing business logic order object to data handler
+        ///</summary>
         private void AddOrder()
         {
             OrderHandler oh = new OrderHandler();
