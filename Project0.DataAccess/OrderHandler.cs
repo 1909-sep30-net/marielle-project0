@@ -103,6 +103,46 @@ namespace Project0.DataAccess
         }
 
         /// <summary>
+        /// Method that sorts orders to print earliest first
+        /// </summary>
+        /// <param name="history"></param>
+        /// <returns></returns>
+        public List<BL.Orders> EarliestFirst(List<BL.Orders> history)
+        {
+            return history.OrderBy(o => o.Date).ToList();
+        }
+
+        /// <summary>
+        /// Method that sorts orders to print Most Expensive first
+        /// </summary>
+        /// <param name="history"></param>
+        /// <returns></returns>
+        public List<BL.Orders> MostExpensiveFirst(List<BL.Orders> history)
+        {
+            return history.OrderByDescending(o => o.Total).ToList();
+        }
+
+        /// <summary>
+        /// Method that sorts orders to print cheapest first
+        /// </summary>
+        /// <param name="history"></param>
+        /// <returns></returns>
+        public List<BL.Orders> CheapestFirst(List<BL.Orders> history)
+        {
+            return history.OrderBy(o => o.Total).ToList();
+        }
+
+        /// <summary>
+        /// Method that sorts orders to print latest first
+        /// </summary>
+        /// <param name="history"></param>
+        /// <returns></returns>
+        public List<BL.Orders> LatestFirst(List<BL.Orders> history)
+        {
+            return history.OrderByDescending(o => o.Date).ToList();
+        }
+
+        /// <summary>
         /// Method that converts Business Logic(BL) Inventory object (Customer Order) to a Data Access CustOrder object for interacting with db
         /// </summary>
         /// <param name="custOrder"></param>

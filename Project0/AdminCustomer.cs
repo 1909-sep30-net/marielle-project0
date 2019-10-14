@@ -18,27 +18,34 @@ namespace Project0.App
             do
             {
                 Console.WriteLine("Welcome to the Customer Records! \n What would you like to do?");
-                Console.WriteLine(" [1] Add Customers \n [2] Search Customers \n [3] Go back to Main Menu \n [4] Exit");
+                Console.WriteLine(" [1] Add Customers \n [2] Search Customers \n [3] Get Customer History \n [4] Go back to Main Menu \n [5] Exit");
                 input = Console.ReadLine();
             } while (ErrorHandler.InvalidIntInput(input));
 
             switch (input)
             {
                 case "1":
+                    //Go to Add Customer UI
                     AddCustomerMenu();
                     break;
 
                 case "2":
+                    //Go to Search Customer UI
                     SearchCustomerMenu();
                     break;
 
                 case "3":
+                    //Go to Customer History UI
+                    AdminOrder ao = new AdminOrder();
+                    ao.ViewCustomerOrderHistory();
+                    break;
+                case "4":
                     //go back to Main Menu
                     AdminMenu main = new AdminMenu();
                     main.Welcome();
                     break;
 
-                case "4":
+                case "5":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
                     exit.Exit();

@@ -61,34 +61,79 @@ namespace Project0.App
             Location l = EnterLocationDetails();
             OrderHandler oh = new OrderHandler();
             List<Orders> history = oh.GetLocationHistory(l);
-            foreach (Orders o in history)
-            {
-                Console.WriteLine(o.Date);
-                foreach (Inventory i in o.CustOrder)
-                {
-                    Console.WriteLine(" Product: " + i.Prod.Name + " \n Quantity: " + i.Stock);
-                }
-            }
+            history = GetOrderPreference(history);
+            Console.WriteLine($"{l.BranchName}'s Order History");
+            PrintHistory(history);
             Log.Information($"View Order History of {l.BranchName}");
             Menu();
         }
 
         ///<summary>Method to view customer history by passing business logic customer object to data handler</summary>
-        private void ViewCustomerOrderHistory()
+        public void ViewCustomerOrderHistory()
         {
             Customer c = EnterCustomerDetails();
             OrderHandler oh = new OrderHandler();
             List<Orders> history = oh.GetCustomerHistory(c);
-            foreach (Orders o in history)
-            {
-                Console.WriteLine(o.Date);
-                foreach (Inventory i in o.CustOrder)
-                {
-                    Console.WriteLine(" Product: " + i.Prod.Name + "\n Quantity: " + i.Stock);
-                }
-            }
+            history = GetOrderPreference(history);
+            Console.WriteLine($"Customer {c.FirstName} {c.LastName}'s Order History");
+            PrintHistory(history);
             Log.Information($"View Order History of {c.FirstName} {c.LastName}");
             Menu();
+        }
+        /// <summary>
+        /// Method that prints Order History based on conditions inputted by user
+        /// </summary>
+        /// <param name="history"></param>
+        public void PrintHistory(List<Orders> history)
+        {
+            foreach (Orders o in history)
+            {
+                Console.WriteLine($"Date and Time: {o.Date}");
+                foreach (Inventory i in o.CustOrder)
+                {
+                    Console.WriteLine("  Product: " + i.Prod.Name + " \n  Quantity: " + i.Stock);
+                }
+                Console.WriteLine($" Total: {o.Total}");
+            }
+        }
+
+        /// <summary>
+        /// Method that gets sorting preference of the user for the order history
+        /// </summary>
+        /// <param name="history"></param>
+        /// <returns></returns>
+        private List<Orders> GetOrderPreference(List<Orders> history)
+        {
+            OrderHandler oh = new OrderHandler();
+            do
+            {
+                Console.WriteLine("How would you like the order history to be ordered?");
+                Console.WriteLine(" [1] Earliest First\n [2] Latest First \n [3] Cheapest First \n [4] Most Expensive First");
+                string input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        history = oh.EarliestFirst(history);
+                        return history;
+
+                    case "2":
+                        history = oh.LatestFirst(history);
+                        return history;
+
+                    case "3":
+                        history = oh.CheapestFirst(history);
+                        return history;
+
+                    case "4":
+                        history = oh.MostExpensiveFirst(history);
+                        return history;
+
+                    default:
+                        Console.WriteLine("invalid input");
+                        Log.Error("Invalid Input");
+                        break;
+                }
+            } while (true);
         }
 
         ///<summary>Method to place order by passing business logic order object to data handler</summary>

@@ -4,3 +4,15 @@
 2019-10-14 14:53:06.124 -05:00 [INF] Begin Program
 2019-10-14 14:53:21.752 -05:00 [INF] View Order History of Flagship
 2019-10-14 14:53:29.575 -05:00 [INF] Exit Program
+2019-10-14 18:26:36.057 -05:00 [INF] Begin Program
+2019-10-14 18:26:50.807 -05:00 [INF] Search customer with name: Marielle 
+2019-10-14 18:26:50.808 -05:00 [INF] 1 customers found
+2019-10-14 18:27:00.183 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-14 18:27:24.760 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-14 18:27:24.763 -05:00 [INF] 1 customers found
+2019-10-14 18:27:33.428 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-14 18:28:00.618 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-14 18:28:00.619 -05:00 [INF] 1 customers found
+2019-10-14 18:28:09.764 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-14 18:28:36.409 -05:00 [INF] View Order History of Flagship
+2019-10-14 18:28:47.951 -05:00 [INF] Exit Program
