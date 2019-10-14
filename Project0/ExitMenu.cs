@@ -9,6 +9,9 @@ namespace Project0.App
 /// </summary>
     class ExitMenu
     {
+        /// <summary>
+        /// Method that queries a user if it wants to exit
+        /// </summary>
         public void Exit()
         {
             //exit application

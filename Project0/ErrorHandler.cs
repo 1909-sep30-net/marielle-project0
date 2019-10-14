@@ -1,7 +1,5 @@
 ﻿using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Project0.App
@@ -11,14 +9,15 @@ namespace Project0.App
     ///
     /// </summary>
 
-    class ErrorHandler
+    internal class ErrorHandler
     {
+        ///<summary> Prints out invalid input message</summary>
         public void InvalidInputMsg()
         {
-            //prints out invalid input message and brings user back to last menu
             Console.WriteLine("Invalid Input");
-            
         }
+
+        ///<summary>Method that verifies if a user input is a valid int or not</summary>
         public static bool InvalidIntInput(string choice)
         {
             if (Regex.Match(choice, @"\s*\d\s*").Success) return false;
@@ -27,20 +26,22 @@ namespace Project0.App
             return true;
         }
 
+        ///<summary>Method that verifies if a user input is a Y or N</summary>
         public static bool InvalidInput(string choice)
         {
             switch (choice)
             {
                 case "Y":
                     return false;
+
                 case "N":
                     return false;
+
                 default:
                     Console.WriteLine("Invalid input.");
                     Log.Error("Invalid Input");
                     return true;
             }
         }
-
     }
 }

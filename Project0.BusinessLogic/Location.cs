@@ -12,9 +12,19 @@ namespace Project0.BusinessLogic
         private List<Inventory> storeInventory;
         private int storeID;
         private string branchName;
-        public Address StoreAddress { get; set; }
-        public List<Inventory> StoreInventory { get; set; }
 
+        /// <summary>
+        /// Address of Location
+        /// </summary>
+        public Address StoreAddress { get; set; }
+
+        /// <summary>
+        /// Store inventory (List of products with their available stock)
+        /// </summary>
+        public List<Inventory> StoreInventory { get; set; }
+        /// <summary>
+        /// Branch Name of Location (Includes format validation of branch names)
+        /// </summary>
         public string BranchName
         {
             get => branchName;

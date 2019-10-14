@@ -10,6 +10,7 @@ namespace Project0.App
 /// </summary>
     public class AdminCustomer
     {
+        ///<summary>Main Menu for customer operations</summary>
         public void MainMenu()
         {
             string input;
@@ -25,14 +26,17 @@ namespace Project0.App
                 case "1":
                     AddCustomerMenu();
                     break;
+
                 case "2":
                     SearchCustomerMenu();
                     break;
+
                 case "3":
                     //go back to Main Menu
                     AdminMenu main = new AdminMenu();
                     main.Welcome();
                     break;
+
                 case "4":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
@@ -48,10 +52,10 @@ namespace Project0.App
                     break;
             }
         }
+
+        ///<summary>Adds customer information through user input and passes to handler class to validate and add to db</summary>
         public Customer AddNewCustomer()
         {
-            //code to add customers;
-            //adds customer info
             Console.WriteLine("Enter First Name:");
             string firstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name:");
@@ -90,7 +94,6 @@ namespace Project0.App
                 Console.WriteLine("Customer added!");
                 Log.Information($"Customer {firstName} {lastName} added");
                 return c;
-
             }
             catch (CustomerException ex)
             {
@@ -108,15 +111,15 @@ namespace Project0.App
             {
                 throw e;
             }
-
         }
+        ///<summary>Add Customer UI that returns to Main Customer Menu</summary>
         public void AddCustomerMenu()
         {
-            
+           
             try
             {
                 _ = AddNewCustomer();
-                
+
                 MainMenu();
             }
             catch (CustomerException ex)
@@ -146,7 +149,10 @@ namespace Project0.App
                 TryAgain(AddCustomerMenu);
             }
         }
-        public List<Customer> SearchCustomer() {
+        ///<summary>Searches customer by passing Business Logic customer object to handler class and printing result fom db</summary>
+        public List<Customer> SearchCustomer()
+        {
+           
             Console.WriteLine("Enter name in fields that apply, if unknown, leave blank");
             Console.WriteLine("Enter First Name: ");
             string firstName = Console.ReadLine();
@@ -177,9 +183,7 @@ namespace Project0.App
             }
             catch (CustomerException ex)
             {
-
                 throw ex;
-
             }
             catch (NotImplementedException ex)
             {
@@ -190,10 +194,10 @@ namespace Project0.App
                 throw ex;
             }
         }
-
+        ///<summary>Search customer UI that returns to main customer menu when finished </summary>
         public void SearchCustomerMenu()
         {
-            
+           
             try
             {
                 _ = SearchCustomer();
@@ -203,20 +207,23 @@ namespace Project0.App
                     Console.WriteLine("Where would you like to go? \n [1] Back to main menu? \n [2] Customer Menu?\n [3] Exit?");
                     input = Console.ReadLine();
                 } while (ErrorHandler.InvalidIntInput(input));
-                
+
                 switch (input)
                 {
                     case "1":
                         AdminMenu am = new AdminMenu();
                         am.Welcome();
                         break;
+
                     case "2":
                         MainMenu();
                         break;
+
                     case "3":
                         ExitMenu exit = new ExitMenu();
                         exit.Exit();
                         break;
+
                     default:
                         ErrorHandler err = new ErrorHandler();
                         err.InvalidInputMsg();
@@ -225,17 +232,14 @@ namespace Project0.App
                         ex.Exit();
                         break;
                 }
-
             }
             catch (CustomerException ex)
             {
-
                 Console.WriteLine(ex.Message);
                 Log.Error(ex.Message);
                 TryAgain(SearchCustomerMenu);
-
             }
-            catch (NotImplementedException ex) 
+            catch (NotImplementedException ex)
             {
                 Console.WriteLine(ex.Message);
                 Log.Error(ex.Message);
@@ -248,10 +252,10 @@ namespace Project0.App
                 TryAgain(SearchCustomerMenu);
             }
         }
-
-
+        ///<summary>Method that asks the user if it wants to retry a failed operation</summary>
         private void TryAgain(Action last)
         {
+            
             Console.WriteLine("Try again? \n Y^(YES) N^(NO)");
             string choice = Console.ReadLine();
             switch (choice)
@@ -259,9 +263,11 @@ namespace Project0.App
                 case "Y":
                     last();
                     break;
+
                 case "N":
                     MainMenu();
                     break;
+
                 default:
                     Console.WriteLine("Invalid input");
                     Log.Error("Invalid Input");
@@ -269,6 +275,5 @@ namespace Project0.App
                     break;
             }
         }
-        
     }
 }

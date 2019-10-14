@@ -13,8 +13,13 @@ namespace Project0.BusinessLogic
         private string name;
         private string desc;
         private int productID;
-
+        /// <summary>
+        /// Price of the Product
+        /// </summary>
         public decimal Price { get; set; }
+        /// <summary>
+        /// Name of the Product
+        /// </summary>
         public string Name { get; set; }
 
     }

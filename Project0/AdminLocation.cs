@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 
 namespace Project0.App
-{
+{/// <summary>
+/// UI for Location Operations
+/// </summary>
     internal class AdminLocation
-    {
+    {///<summary>Main menu for location operations</summary>
         public void Menu()
         {
             Console.WriteLine("Welcome to Location UI! \n What would you like to do?");
@@ -42,10 +44,10 @@ namespace Project0.App
                     break;
             }
         }
-        
+        ///<summary>Method to View Inventory of Chosen Location by passing business logic location object to data handler</summary>
         private void ViewLocationInventory()
         {
-            //code to View Inventory of Chosen Location
+            
             LocationHandler lh = new LocationHandler();
             List<Location> locations = lh.GetLocations();
             int i = 0;

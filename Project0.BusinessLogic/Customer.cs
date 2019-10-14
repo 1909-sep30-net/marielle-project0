@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Project0.BusinessLogic
 {/// <summary>
@@ -13,9 +12,13 @@ namespace Project0.BusinessLogic
         private Address custAddress;
         private int custID;
 
-        public string FirstName {
+        /// <summary>
+        /// First Name property of Customer class (Includes format validation)
+        /// </summary>
+        public string FirstName
+        {
             get => firstName;
-            set 
+            set
             {
                 try
                 {
@@ -24,18 +27,18 @@ namespace Project0.BusinessLogic
                 }
                 catch (CustomerException)
                 {
-
                     throw new CustomerException("Invalid First Name");
                 }
-                
+            }
+        }
 
-            } }
-
-       
-
-        public string LastName {
+        /// <summary>
+        /// Last Name Property of Customer Class (Includes format validation)
+        /// </summary>
+        public string LastName
+        {
             get => lastName;
-            set 
+            set
             {
                 try
                 {
@@ -44,18 +47,25 @@ namespace Project0.BusinessLogic
                 }
                 catch (CustomerException)
                 {
-
                     throw new CustomerException("Invalid Last Name");
                 }
-            } 
+            }
         }
+
+        /// <summary>
+        /// Address Property of Customer Class (Input Validation Done in Address Class)
+        /// </summary>
         public Address CustAddress { get; set; }
-    
+
         public int CustID { get; set; }
+
+        /// <summary>
+        /// Method that validates Customer name inputs in class
+        /// </summary>
+        /// <param name="s"></param>
         private void validate(string s)
         {
-            if (!(Regex.Match(s, @"\s*[A-z]+").Success)) throw new CustomerException("Empty Input");
-
+            if (!Regex.Match(s, @"\s*[A-z]+\s*?([A-z]\s*)").Success) throw new CustomerException("Empty Input");
         }
     }
 }

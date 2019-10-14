@@ -3,7 +3,7 @@
 namespace Project0.BusinessLogic
 {/// <summary>
 /// Defines what is in inventory
-/// Object UI uses in location inventory and customer order
+/// Order UI uses in location inventory and customer order
 /// </summary>
     public class Inventory
     {

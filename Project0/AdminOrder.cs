@@ -10,6 +10,7 @@ namespace Project0.App
 /// </summary>
     public class AdminOrder
     {
+        ///<summary>Main menu for Order Operations</summary>
         public void Menu()
         {
             Console.WriteLine("Welcome to Order UI! \n What would you like to do?");
@@ -53,9 +54,9 @@ namespace Project0.App
             }
         }
 
+        ///<summary>Method to view history of a location by passing a business logic location object to data handler</summary>
         public void ViewLocationOrderHistory()
         {
-            //code to view location history
             Location l = EnterLocationDetails();
             OrderHandler oh = new OrderHandler();
             List<Orders> history = oh.GetLocationHistory(l);
@@ -71,9 +72,9 @@ namespace Project0.App
             Menu();
         }
 
+        ///<summary>Method to view customer history by passing business logic customer object to data handler</summary>
         private void ViewCustomerOrderHistory()
         {
-            //code to view customer history
             Customer c = EnterCustomerDetails();
             OrderHandler oh = new OrderHandler();
             List<Orders> history = oh.GetCustomerHistory(c);
@@ -89,10 +90,9 @@ namespace Project0.App
             Menu();
         }
 
+        ///<summary>Method to place order by passing business logic order object to data handler</summary>
         private void AddOrder()
         {
-            //code to place order
-
             OrderHandler oh = new OrderHandler();
             LocationHandler lh = new LocationHandler();
             Customer c = new Customer();
@@ -186,6 +186,10 @@ namespace Project0.App
             Menu();
         }
 
+        ///<summary>
+        ///Method that returns a location based on user input
+        ///The location is validated by taking valid locations via data handler classes and asking the user to choose among them
+        /// </summary>
         private Location EnterLocationDetails()
         {
             Console.WriteLine("Choose Branch:");
@@ -213,6 +217,10 @@ namespace Project0.App
             return new Location();
         }
 
+        ///<summary>
+        ///Method that returns a customer based on user input
+        /// The customer is validated by taking valid customers via data handler that match conditions given by the user and asking the user to choose among them
+        ///</summary>
         private Customer EnterCustomerDetails()
         {
             string choice;

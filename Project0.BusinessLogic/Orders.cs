@@ -14,11 +14,27 @@ namespace Project0.BusinessLogic
         private Location stor;
         private DateTime date;
         private decimal total;
-        public List<Inventory> CustOrder { get; set; }
-        public Customer Cust { get; set; }
-        public Location Stor { get; set; }
 
+        /// <summary>
+        /// List of products with their corresponding quantities that a customer ordered
+        /// </summary>
+        public List<Inventory> CustOrder { get; set; }
+
+        /// <summary>
+        /// Customer who placed the order
+        /// </summary>
+        public Customer Cust { get; set; }
+        /// <summary>
+        /// Location where order was placed
+        /// </summary>
+        public Location Stor { get; set; }
+        /// <summary>
+        /// Time and Date when order was placed
+        /// </summary>
         public DateTime Date { get; set; }
+        /// <summary>
+        /// Total of an order
+        /// </summary>
         public decimal Total
         {
             get

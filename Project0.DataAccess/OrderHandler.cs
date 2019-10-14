@@ -15,6 +15,10 @@ namespace Project0.DataAccess
     /// </summary>
     public class OrderHandler
     {
+        /// <summary>
+        /// Method that sets up connection with db
+        /// </summary>
+        /// <returns>DBContext</returns>
         public Project0DBContext GetContext()
         {
             string connectionString = SecretConfiguration.ConnectionString;
@@ -25,7 +29,10 @@ namespace Project0.DataAccess
 
             return new Project0DBContext(options);
         }
-
+        /// <summary>
+        /// Method that adds order a customer placed on the DB
+        /// </summary>
+        /// <param name="o"></param>
         public void AddOrder(BL.Orders o)
         {
             using var context = GetContext();
@@ -42,7 +49,11 @@ namespace Project0.DataAccess
             context.Orders.Add(order);
             context.SaveChanges();
         }
-
+        /// <summary>
+        /// Method that gets customer's order history based on their first and last name
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public List<BL.Orders> GetCustomerHistory(BL.Customer c)
         {
             //get customer order history
@@ -56,7 +67,11 @@ namespace Project0.DataAccess
             }
             return output;
         }
-
+        /// <summary>
+        /// Method that gets location's order history based on the branch name 
+        /// </summary>
+        /// <param name="l"></param>
+        /// <returns></returns>
         public List<BL.Orders> GetLocationHistory(BL.Location l)
         {
             using var context = GetContext();
@@ -68,7 +83,10 @@ namespace Project0.DataAccess
             }
             return output;
         }
-
+        /// <summary>
+        /// Method that prints order details after placing an order
+        /// </summary>
+        /// <param name="o"></param>
         public void PrintOrderDetails(BL.Orders o)
         {
             Console.WriteLine("Order placed!");
@@ -79,7 +97,11 @@ namespace Project0.DataAccess
             }
             Console.WriteLine($"Order Total: {o.Total}");
         }
-
+        /// <summary>
+        /// Method that converts Business Logic(BL) Inventory object (Customer Order) to a Data Access CustOrder object for interacting with db
+        /// </summary>
+        /// <param name="custOrder"></param>
+        /// <returns>Data Access CustOrder Collection</returns>
         public ICollection<CustOrder> ParseCustOrder(List<BL.Inventory> custOrder)
         {
             ICollection<CustOrder> custOrd = new List<CustOrder>();
@@ -96,7 +118,11 @@ namespace Project0.DataAccess
             }
             return custOrd;
         }
-
+        /// <summary>
+        /// Method that converts Data Access Order objects to Business Logic Order Object for UI interaction
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns>Business Logic Order</returns>
         public BL.Orders ParseOrder(Orders o)
         {
             using var context = GetContext();
@@ -112,7 +138,11 @@ namespace Project0.DataAccess
             };
             return ord;
         }
-
+        /// <summary>
+        /// Method that transforms Data Access CustOrder Colection to a Business Logic Inventory List
+        /// </summary>
+        /// <param name="custOrder"></param>
+        /// <returns>Business Logic Inventory List</returns>
         private List<BL.Inventory> ParseCustOrder(ICollection<CustOrder> custOrder)
         {
             using var context = GetContext();

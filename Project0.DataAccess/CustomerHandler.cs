@@ -12,6 +12,11 @@ namespace Project0.DataAccess
 /// </summary>
     public class CustomerHandler
     {
+        /// <summary>
+        /// Method that converts Business Logic Customer objects to Data Access customer objects (for connecting with database)
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns>DataAccces Customer object</returns>
         public Customer ParseCustomer(BL.Customer c)
         {
             Customer cust = new Customer()
@@ -26,7 +31,11 @@ namespace Project0.DataAccess
 
             return cust;
         }
-
+        /// <summary>
+        /// Method that converts DataAccess Customer objects to Business Logic Customer objects (for ineracting with UI)
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns>BusinessLogic Customer object</returns>
         public BL.Customer ParseCustomer(Customer c)
         {
             BL.Customer cust = new BL.Customer()
@@ -45,6 +54,10 @@ namespace Project0.DataAccess
             return cust;
         }
 
+        /// <summary>
+        /// Method that sets up connection with db
+        /// </summary>
+        /// <returns>DBContext</returns>
         public Project0DBContext GetContext()
         {
             string connectionString = SecretConfiguration.ConnectionString;
@@ -55,7 +68,10 @@ namespace Project0.DataAccess
 
             return new Project0DBContext(options);
         }
-
+        /// <summary>
+        /// Method that adds customers to database
+        /// </summary>
+        /// <param name="c"></param>
         public void AddCustomer(BL.Customer c)
         {
             //Code to add customer to database
@@ -64,7 +80,12 @@ namespace Project0.DataAccess
             context.Customer.Add(cust);
             context.SaveChanges();
         }
-
+        /// <summary>
+        /// Method that searches a customer in the database based on their first and last names
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <returns>List of Business Logic Customer Objects</returns>
         public List<BL.Customer> Search(string firstName, string lastName)
         {
             //generate code that searches db by name
@@ -94,23 +115,32 @@ namespace Project0.DataAccess
                     break;
 
                 case 3:
+                    //full name valid;
                     foreach (Customer c in context.Customer)
                     {
                         if (c.LastName == lastName && c.FirstName == firstName) customerFound.Add(ParseCustomer(c));
                     }
                     if (customerFound == null) throw CustomerNotFoundException("Customer not found");
                     break;
-                    //full name valid;
+                    
             }
             return customerFound;
-            //code to Search customer in DB
         }
-
+        /// <summary>
+        /// Exception generated when a customer was not found in db records
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns>NotImplementedException</returns>
         public Exception CustomerNotFoundException(string v)
         {
             throw new NotImplementedException(v);
         }
-
+        /// <summary>
+        /// Method that validates the format of names the user inputted
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <returns></returns>
         private int Validate(string firstName, string lastName)
         {
             int fName = 0;

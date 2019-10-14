@@ -13,6 +13,10 @@ namespace Project0.DataAccess
 /// </summary>
     public class LocationHandler
     {
+        /// <summary>
+        /// Method that returns available locations to order from
+        /// </summary>
+        /// <returns>List of Business Logic Locations</returns>
         public List<BL.Location> GetLocations()
         {
             using var context = GetContext();
@@ -24,6 +28,11 @@ namespace Project0.DataAccess
             return local;
         }
 
+        /// <summary>
+        /// Method that returns inventory of a certain branch
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns>List of Business Logic Inventories</returns>
         public List<BL.Inventory> GetInventory(BL.Location location)
         {
             using var context = GetContext();
@@ -36,6 +45,11 @@ namespace Project0.DataAccess
             return theInvent;
         }
 
+        /// <summary>
+        /// Method that returns available inventory of a certain branch
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns>List of Business Logic Inventories</returns>
         public List<BL.Inventory> GetAvailInventory(BL.Location location)
         {
             //gets inventory from location in db
@@ -49,6 +63,11 @@ namespace Project0.DataAccess
             return availInventory;
         }
 
+        /// <summary>
+        /// Method that updates the inventory in DB
+        /// </summary>
+        /// <param name="inv"></param>
+        /// <param name="local"></param>
         public void UpdateInventory(BL.Inventory inv, BL.Location local)
         {
             //updates store inventory and also rejects orders with too high quantity
@@ -67,6 +86,11 @@ namespace Project0.DataAccess
             Log.Information("Inventory Updated");
         }
 
+        /// <summary>
+        /// Method that converts Data Access Location object to a Business Logic Location object for interacting with UI
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns>Business Logic Location</returns>
         internal BL.Location ParseLocation(Location location)
         {
             BL.Location local = new BL.Location()
@@ -84,6 +108,11 @@ namespace Project0.DataAccess
             return local;
         }
 
+        /// <summary>
+        /// Method that converts Business Logic Location objects to Data Access Location objects for DB interaction
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns>Data Access Location</returns>
         internal Location ParseLocation(BL.Location location)
         {
             Location local = new Location()
@@ -97,6 +126,11 @@ namespace Project0.DataAccess
             return local;
         }
 
+        /// <summary>
+        /// Method that converts Data Access Inventory List to Business Logic Inventory List for interacting with UI
+        /// </summary>
+        /// <param name="local"></param>
+        /// <returns>Business Logic Inventory List</returns>
         public List<BL.Inventory> GetParsedStoreInventory(Location local)
         {
             using var context = GetContext();
@@ -109,6 +143,12 @@ namespace Project0.DataAccess
             return inv;
         }
 
+        /// <summary>
+        /// Method that converts Data Access Inventory object to a Business Logic Inventory object for interacting with UI
+        /// </summary>
+        /// <param name="inventory"></param>
+        /// <returns>Business Logic Inventory</returns>
+
         private BL.Inventory ParseInventory(Inventory inventory)
         {
             using var context = GetContext();
@@ -120,6 +160,11 @@ namespace Project0.DataAccess
             return i;
         }
 
+        /// <summary>
+        /// Method that converts Data Access Product object to a Business Logic Product object for interacting with UI
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns>Business Logic Product</returns>
         public BL.Product ParseProduct(Product product)
         {
             BL.Product p = new BL.Product()
@@ -130,6 +175,11 @@ namespace Project0.DataAccess
             return p;
         }
 
+        /// <summary>
+        /// Method that converts Business Logic Inventory Object to Data Access Inventory Object for DB interaction
+        /// </summary>
+        /// <param name="inventory"></param>
+        /// <returns>Data Access Inventory</returns>
         private Inventory ParseInventory(BL.Inventory inventory)
         {
             using var context = GetContext();
@@ -141,6 +191,10 @@ namespace Project0.DataAccess
             return i;
         }
 
+        /// <summary>
+        /// Method that sets up connection with db
+        /// </summary>
+        /// <returns>DBContext</returns>
         public Project0DBContext GetContext()
         {
             string connectionString = SecretConfiguration.ConnectionString;
