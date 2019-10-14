@@ -5,9 +5,10 @@ using System;
 using System.Collections.Generic;
 
 namespace Project0.App
-{/// <summary>
-/// UI for Customer Operations
-/// </summary>
+{
+    /// <summary>
+    /// UI for Customer Operations
+    /// </summary>
     public class AdminCustomer
     {
         ///<summary>Main Menu for customer operations</summary>
@@ -112,10 +113,10 @@ namespace Project0.App
                 throw e;
             }
         }
+
         ///<summary>Add Customer UI that returns to Main Customer Menu</summary>
         public void AddCustomerMenu()
         {
-           
             try
             {
                 _ = AddNewCustomer();
@@ -149,10 +150,10 @@ namespace Project0.App
                 TryAgain(AddCustomerMenu);
             }
         }
+
         ///<summary>Searches customer by passing Business Logic customer object to handler class and printing result fom db</summary>
         public List<Customer> SearchCustomer()
         {
-           
             Console.WriteLine("Enter name in fields that apply, if unknown, leave blank");
             Console.WriteLine("Enter First Name: ");
             string firstName = Console.ReadLine();
@@ -194,10 +195,10 @@ namespace Project0.App
                 throw ex;
             }
         }
+
         ///<summary>Search customer UI that returns to main customer menu when finished </summary>
         public void SearchCustomerMenu()
         {
-           
             try
             {
                 _ = SearchCustomer();
@@ -252,10 +253,10 @@ namespace Project0.App
                 TryAgain(SearchCustomerMenu);
             }
         }
+
         ///<summary>Method that asks the user if it wants to retry a failed operation</summary>
         private void TryAgain(Action last)
         {
-            
             Console.WriteLine("Try again? \n Y^(YES) N^(NO)");
             string choice = Console.ReadLine();
             switch (choice)

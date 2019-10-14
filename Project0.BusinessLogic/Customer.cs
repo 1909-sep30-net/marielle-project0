@@ -1,10 +1,11 @@
 ﻿using System.Text.RegularExpressions;
 
 namespace Project0.BusinessLogic
-{/// <summary>
-/// Customer format of the program
-/// UI interacts with this format of customer
-/// </summary>
+{
+    /// <summary>
+    /// Customer format of the program
+    /// UI interacts with this format of customer
+    /// </summary>
     public class Customer
     {
         private string firstName;

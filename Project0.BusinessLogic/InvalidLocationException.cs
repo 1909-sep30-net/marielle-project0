@@ -2,9 +2,10 @@
 using System.Runtime.Serialization;
 
 namespace Project0.BusinessLogic
-{/// <summary>
-/// Error for invalid location
-/// </summary>
+{
+    /// <summary>
+    /// Error for invalid location
+    /// </summary>
     [Serializable]
     public class InvalidLocationException : Exception
     {

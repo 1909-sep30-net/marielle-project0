@@ -5,9 +5,10 @@ using System;
 using System.Collections.Generic;
 
 namespace Project0.App
-{/// <summary>
-/// UI for Order Operations
-/// </summary>
+{
+    /// <summary>
+    /// UI for Order Operations
+    /// </summary>
     public class AdminOrder
     {
         ///<summary>Main menu for Order Operations</summary>

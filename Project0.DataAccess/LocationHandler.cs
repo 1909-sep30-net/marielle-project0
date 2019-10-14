@@ -7,10 +7,11 @@ using System.Linq;
 using BL = Project0.BusinessLogic;
 
 namespace Project0.DataAccess
-{/// <summary>
-/// Converts the DB version of Locations and Inventory to Business Logic Version and vice versa
-/// Handles data access to locations
-/// </summary>
+{
+    /// <summary>
+    /// Converts the DB version of Locations and Inventory to Business Logic Version and vice versa
+    /// Handles data access to locations
+    /// </summary>
     public class LocationHandler
     {
         /// <summary>

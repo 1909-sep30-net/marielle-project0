@@ -2,10 +2,11 @@
 using System.Text.RegularExpressions;
 
 namespace Project0.BusinessLogic
-{/// <summary>
-/// Location format of the program
-/// UI interacts with this format of location
-/// </summary>
+{
+    /// <summary>
+    /// Location format of the program
+    /// UI interacts with this format of location
+    /// </summary>
     public class Location
     {
         private Address storeAddress;
@@ -22,6 +23,7 @@ namespace Project0.BusinessLogic
         /// Store inventory (List of products with their available stock)
         /// </summary>
         public List<Inventory> StoreInventory { get; set; }
+
         /// <summary>
         /// Branch Name of Location (Includes format validation of branch names)
         /// </summary>

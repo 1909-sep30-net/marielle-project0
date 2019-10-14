@@ -5,11 +5,13 @@ using System;
 using System.Collections.Generic;
 
 namespace Project0.App
-{/// <summary>
-/// UI for Location Operations
-/// </summary>
+{
+    /// <summary>
+    /// UI for Location Operations
+    /// </summary>
     internal class AdminLocation
-    {///<summary>Main menu for location operations</summary>
+    {
+        ///<summary>Main menu for location operations</summary>
         public void Menu()
         {
             Console.WriteLine("Welcome to Location UI! \n What would you like to do?");
@@ -22,20 +24,24 @@ namespace Project0.App
                     AdminOrder ao = new AdminOrder();
                     ao.ViewLocationOrderHistory();
                     break;
+
                 case "2":
                     //code to view location inventory
                     ViewLocationInventory();
                     break;
+
                 case "3":
                     //go back to Main Menu
                     AdminMenu main = new AdminMenu();
                     main.Welcome();
                     break;
+
                 case "4":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
                     exit.Exit();
                     break;
+
                 default:
                     //error handling
                     ErrorHandler err = new ErrorHandler();
@@ -44,14 +50,14 @@ namespace Project0.App
                     break;
             }
         }
+
         ///<summary>Method to View Inventory of Chosen Location by passing business logic location object to data handler</summary>
         private void ViewLocationInventory()
         {
-            
             LocationHandler lh = new LocationHandler();
             List<Location> locations = lh.GetLocations();
             int i = 0;
-            foreach(Location l in locations)
+            foreach (Location l in locations)
             {
                 Console.WriteLine($"[{i}] {l.BranchName}");
                 i++;
@@ -78,8 +84,6 @@ namespace Project0.App
                 Log.Error(ex.Message);
                 ViewLocationInventory();
             }
-            
-
         }
     }
 }

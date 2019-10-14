@@ -11,7 +11,6 @@ namespace Project0.BusinessLogic
         private States state;
         private int zipcode;
 
-
         ///<summary>
         ///Street Property of Address class(Includes format validation)
         /// </summary>
@@ -29,6 +28,7 @@ namespace Project0.BusinessLogic
                 }
             }
         }
+
         /// <summary>
         /// City Property of Address class(Includes format validation)
         /// </summary>
@@ -46,6 +46,7 @@ namespace Project0.BusinessLogic
                 else { throw new InvalidAddressException("Invalid City"); }
             }
         }
+
         /// <summary>
         /// State property of Address class (Enum)
         /// </summary>
@@ -57,6 +58,7 @@ namespace Project0.BusinessLogic
                 state = value;
             }
         }
+
         /// <summary>
         /// Zipcode property of Address class(Includes format validation)
         /// </summary>

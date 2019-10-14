@@ -1,16 +1,15 @@
 ﻿using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Project0.App
-{/// <summary>
-/// Main Menu
-/// Root node of program navigation
-/// </summary>
-    class AdminMenu
+{
+    /// <summary>
+    /// Main Menu
+    /// Root node of program navigation
+    /// </summary>
+    internal class AdminMenu
     {
-        public void Welcome() 
+        public void Welcome()
         {
             Console.WriteLine("Tindahan ni Aling Nena");
             Console.WriteLine("Welcome BacK! What would you like to view?");
@@ -23,21 +22,25 @@ namespace Project0.App
                     AdminLocation al = new AdminLocation();
                     al.Menu();
                     break;
+
                 case "2":
                     //go to customer UI
                     AdminCustomer ac = new AdminCustomer();
                     ac.MainMenu();
                     break;
+
                 case "3":
                     //go to order UI
                     AdminOrder ao = new AdminOrder();
                     ao.Menu();
                     break;
+
                 case "4":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
                     exit.Exit();
                     break;
+
                 default:
                     //error handler
                     ErrorHandler err = new ErrorHandler();
@@ -46,7 +49,6 @@ namespace Project0.App
                     Welcome();
                     break;
             }
-
         }
     }
 }

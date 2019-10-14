@@ -6,10 +6,11 @@ using System.Text.RegularExpressions;
 using BL = Project0.BusinessLogic;
 
 namespace Project0.DataAccess
-{/// <summary>
-/// This class connects the DB versions of the Customer class to Business Logic versions of the Customer Class and vice versa
-/// Accesses the DB
-/// </summary>
+{
+    /// <summary>
+    /// This class connects the DB versions of the Customer class to Business Logic versions of the Customer Class and vice versa
+    /// Accesses the DB
+    /// </summary>
     public class CustomerHandler
     {
         /// <summary>
@@ -31,6 +32,7 @@ namespace Project0.DataAccess
 
             return cust;
         }
+
         /// <summary>
         /// Method that converts DataAccess Customer objects to Business Logic Customer objects (for ineracting with UI)
         /// </summary>
@@ -68,6 +70,7 @@ namespace Project0.DataAccess
 
             return new Project0DBContext(options);
         }
+
         /// <summary>
         /// Method that adds customers to database
         /// </summary>
@@ -80,6 +83,7 @@ namespace Project0.DataAccess
             context.Customer.Add(cust);
             context.SaveChanges();
         }
+
         /// <summary>
         /// Method that searches a customer in the database based on their first and last names
         /// </summary>
@@ -122,10 +126,10 @@ namespace Project0.DataAccess
                     }
                     if (customerFound == null) throw CustomerNotFoundException("Customer not found");
                     break;
-                    
             }
             return customerFound;
         }
+
         /// <summary>
         /// Exception generated when a customer was not found in db records
         /// </summary>
@@ -135,6 +139,7 @@ namespace Project0.DataAccess
         {
             throw new NotImplementedException(v);
         }
+
         /// <summary>
         /// Method that validates the format of names the user inputted
         /// </summary>

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Project0.BusinessLogic
-{/// <summary>
-/// Order format of the program
-/// UI interacts with this format of the Order
-/// </summary>
-     public class Orders
+{
+    /// <summary>
+    /// Order format of the program
+    /// UI interacts with this format of the Order
+    /// </summary>
+    public class Orders
     {
         private List<Inventory> custOrder;
         private Customer cust;
@@ -24,14 +24,17 @@ namespace Project0.BusinessLogic
         /// Customer who placed the order
         /// </summary>
         public Customer Cust { get; set; }
+
         /// <summary>
         /// Location where order was placed
         /// </summary>
         public Location Stor { get; set; }
+
         /// <summary>
         /// Time and Date when order was placed
         /// </summary>
         public DateTime Date { get; set; }
+
         /// <summary>
         /// Total of an order
         /// </summary>
@@ -47,11 +50,9 @@ namespace Project0.BusinessLogic
                 }
                 return total;
             }
-            set 
+            set
             {
             }
         }
-
-
     }
 }

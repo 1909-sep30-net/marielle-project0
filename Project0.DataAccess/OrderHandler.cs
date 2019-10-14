@@ -29,6 +29,7 @@ namespace Project0.DataAccess
 
             return new Project0DBContext(options);
         }
+
         /// <summary>
         /// Method that adds order a customer placed on the DB
         /// </summary>
@@ -49,6 +50,7 @@ namespace Project0.DataAccess
             context.Orders.Add(order);
             context.SaveChanges();
         }
+
         /// <summary>
         /// Method that gets customer's order history based on their first and last name
         /// </summary>
@@ -67,8 +69,9 @@ namespace Project0.DataAccess
             }
             return output;
         }
+
         /// <summary>
-        /// Method that gets location's order history based on the branch name 
+        /// Method that gets location's order history based on the branch name
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
@@ -83,6 +86,7 @@ namespace Project0.DataAccess
             }
             return output;
         }
+
         /// <summary>
         /// Method that prints order details after placing an order
         /// </summary>
@@ -97,6 +101,7 @@ namespace Project0.DataAccess
             }
             Console.WriteLine($"Order Total: {o.Total}");
         }
+
         /// <summary>
         /// Method that converts Business Logic(BL) Inventory object (Customer Order) to a Data Access CustOrder object for interacting with db
         /// </summary>
@@ -118,6 +123,7 @@ namespace Project0.DataAccess
             }
             return custOrd;
         }
+
         /// <summary>
         /// Method that converts Data Access Order objects to Business Logic Order Object for UI interaction
         /// </summary>
@@ -138,6 +144,7 @@ namespace Project0.DataAccess
             };
             return ord;
         }
+
         /// <summary>
         /// Method that transforms Data Access CustOrder Colection to a Business Logic Inventory List
         /// </summary>
