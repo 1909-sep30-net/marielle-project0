@@ -278,6 +278,12 @@ namespace Project0.App
                 Log.Error(ex.Message);
                 EnterLocationDetails();
             }
+            catch(ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Log.Error(ex.Message);
+                EnterLocationDetails();
+            }
             return new Location();
         }
 

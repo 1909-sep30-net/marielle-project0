@@ -38,3 +38,59 @@
 2019-10-15 09:08:00.307 -05:00 [INF] 1 customers found
 2019-10-15 09:08:02.981 -05:00 [INF] View Order History of Michelle Smith
 2019-10-15 09:08:21.384 -05:00 [INF] Exit Program
+2019-10-15 13:04:15.131 -05:00 [INF] Begin Program
+2019-10-15 13:04:32.405 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-15 13:04:32.406 -05:00 [INF] 1 customers found
+2019-10-15 13:04:44.139 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-15 13:04:58.434 -05:00 [INF] Search customer with name: sdg sdg
+2019-10-15 13:04:58.559 -05:00 [ERR] No customer found
+2019-10-15 13:05:28.041 -05:00 [INF] Search customer with name: Michelle 
+2019-10-15 13:05:28.049 -05:00 [INF] 1 customers found
+2019-10-15 13:05:31.214 -05:00 [INF] View Order History of Michelle Smith
+2019-10-15 13:05:53.624 -05:00 [INF] View Order History of Branch1
+2019-10-15 13:06:24.391 -05:00 [INF] Customer Marielle Nolasco added
+2019-10-15 13:06:33.250 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-15 13:06:33.275 -05:00 [INF] 2 customers found
+2019-10-15 13:06:47.606 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-15 13:06:56.065 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-15 13:06:56.070 -05:00 [INF] 2 customers found
+2019-10-15 13:07:13.596 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-15 13:07:28.374 -05:00 [INF] Exit Program
+2019-10-15 13:08:16.257 -05:00 [INF] Begin Program
+2019-10-15 13:08:28.892 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-15 13:08:28.893 -05:00 [INF] 2 customers found
+2019-10-15 13:08:38.277 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-15 13:08:42.556 -05:00 [INF] Exit Program
+2019-10-15 13:10:43.838 -05:00 [INF] Begin Program
+2019-10-15 13:10:57.357 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-15 13:10:57.358 -05:00 [INF] 2 customers found
+2019-10-15 13:11:00.665 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-15 13:11:25.284 -05:00 [INF] Search customer with name: Marielle 
+2019-10-15 13:11:25.293 -05:00 [INF] 2 customers found
+2019-10-15 13:11:34.011 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-15 13:11:45.339 -05:00 [INF] Exit Program
+2019-10-15 13:13:09.167 -05:00 [INF] Begin Program
+2019-10-15 13:13:22.046 -05:00 [INF] Search customer with name: Marielle 
+2019-10-15 13:13:22.048 -05:00 [INF] 2 customers found
+2019-10-15 13:13:43.341 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-15 13:13:43.351 -05:00 [INF] 2 customers found
+2019-10-15 13:15:07.120 -05:00 [INF] Begin Program
+2019-10-15 13:15:33.684 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-15 13:15:33.685 -05:00 [INF] 2 customers found
+2019-10-15 13:15:42.226 -05:00 [ERR] Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+2019-10-15 13:15:46.369 -05:00 [ERR] Input string was not in a correct format.
+2019-10-15 13:16:35.902 -05:00 [INF] Begin Program
+2019-10-15 13:16:52.320 -05:00 [INF] Search customer with name: Marielle Nolasco
+2019-10-15 13:16:52.321 -05:00 [INF] 2 customers found
+2019-10-15 13:17:09.664 -05:00 [ERR] Quantity should be greater than 0
+2019-10-15 13:17:17.306 -05:00 [INF] Inventory Updated
+2019-10-15 13:17:34.028 -05:00 [ERR] Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+2019-10-15 13:17:59.869 -05:00 [INF] Inventory Updated
+2019-10-15 13:18:28.442 -05:00 [INF] Order Added
+2019-10-15 13:18:28.442 -05:00 [INF] Order was made by customer Marielle Nolasco at Flagship store
+2019-10-15 13:19:20.782 -05:00 [INF] Exit Program
+2019-10-15 13:19:58.640 -05:00 [INF] Begin Program
+2019-10-15 13:20:22.280 -05:00 [INF] Search customer with name: Marielle 
+2019-10-15 13:20:22.281 -05:00 [INF] 2 customers found
+2019-10-15 13:20:23.959 -05:00 [ERR] Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+2019-10-15 13:20:44.461 -05:00 [INF] Exit Program

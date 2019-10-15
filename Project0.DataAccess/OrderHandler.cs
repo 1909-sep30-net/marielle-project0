@@ -41,8 +41,8 @@ namespace Project0.DataAccess
             LocationHandler lh = new LocationHandler();
             Orders order = new Orders()
             {
-                Cust = context.Customer.First(c => c.FirstName == o.Cust.FirstName && c.LastName == o.Cust.LastName),
-                Location = context.Location.First(l => l.BranchName == o.Stor.BranchName),
+                Cust = context.Customer.Single(c => c.FirstName == o.Cust.FirstName && c.LastName == o.Cust.LastName && c.City == o.Cust.CustAddress.City),
+                Location = context.Location.Single(l => l.BranchName == o.Stor.BranchName),
                 CustOrder = ParseCustOrder(o.CustOrder),
                 Total = o.Total,
                 OrderDate = DateTime.Now
@@ -62,7 +62,7 @@ namespace Project0.DataAccess
             using var context = GetContext();
             CustomerHandler ch = new CustomerHandler();
             List<BL.Orders> output = new List<BL.Orders>();
-            List<Orders> dbOrd = context.Orders.Where(o => o.Cust.FirstName == c.FirstName && o.Cust.LastName == c.LastName).ToList();
+            List<Orders> dbOrd = context.Orders.Where(o => o.Cust.FirstName == c.FirstName && o.Cust.LastName == c.LastName && o.Cust.City == c.CustAddress.City).ToList();
             foreach (Orders o in dbOrd)
             {
                 output.Add(ParseOrder(o));
