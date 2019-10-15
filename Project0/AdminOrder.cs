@@ -61,9 +61,17 @@ namespace Project0.App
             Location l = EnterLocationDetails();
             OrderHandler oh = new OrderHandler();
             List<Orders> history = oh.GetLocationHistory(l);
-            history = GetOrderPreference(history);
-            Console.WriteLine($"{l.BranchName}'s Order History");
-            PrintHistory(history);
+            if(history.Count > 0)
+            {
+                history = GetOrderPreference(history);
+                Console.WriteLine($"{l.BranchName}'s Order History");
+                PrintHistory(history);
+            }
+            else
+            {
+                Console.WriteLine($"{l.BranchName} has no order history. No orders have been placed in this branch yet");
+            }
+            
             Log.Information($"View Order History of {l.BranchName}");
             Menu();
         }
@@ -74,9 +82,16 @@ namespace Project0.App
             Customer c = EnterCustomerDetails();
             OrderHandler oh = new OrderHandler();
             List<Orders> history = oh.GetCustomerHistory(c);
-            history = GetOrderPreference(history);
-            Console.WriteLine($"Customer {c.FirstName} {c.LastName}'s Order History");
-            PrintHistory(history);
+            if (history.Count > 0)
+            {
+                history = GetOrderPreference(history);
+                Console.WriteLine($"Customer {c.FirstName} {c.LastName}'s Order History");
+                PrintHistory(history);
+            }
+            else
+            {
+                Console.WriteLine($"Customer {c.FirstName} {c.LastName} has no order history because they haven't placed any orders yet.");
+            }
             Log.Information($"View Order History of {c.FirstName} {c.LastName}");
             Menu();
         }

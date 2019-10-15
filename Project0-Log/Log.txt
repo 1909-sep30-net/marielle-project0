@@ -18,3 +18,23 @@
 2019-10-14 18:28:47.951 -05:00 [INF] Exit Program
 2019-10-14 18:33:55.150 -05:00 [INF] Begin Program
 2019-10-14 18:34:12.651 -05:00 [INF] View Order History of Flagship
+2019-10-15 08:58:36.566 -05:00 [INF] Begin Program
+2019-10-15 08:58:48.415 -05:00 [INF] Search customer with name: Marielle 
+2019-10-15 08:58:48.416 -05:00 [INF] 1 customers found
+2019-10-15 08:58:59.484 -05:00 [INF] View Order History of Marielle Nolasco
+2019-10-15 08:59:18.136 -05:00 [INF] Exit Program
+2019-10-15 09:00:04.050 -05:00 [INF] Begin Program
+2019-10-15 09:00:40.693 -05:00 [INF] Customer Michelle Smith added
+2019-10-15 09:00:47.498 -05:00 [INF] Search customer with name: Michelle 
+2019-10-15 09:00:47.503 -05:00 [INF] 1 customers found
+2019-10-15 09:00:55.018 -05:00 [INF] View Order History of Michelle Smith
+2019-10-15 09:01:09.389 -05:00 [INF] Exit Program
+2019-10-15 09:03:21.360 -05:00 [INF] Begin Program
+2019-10-15 09:03:34.836 -05:00 [INF] Search customer with name: Michelle 
+2019-10-15 09:03:34.837 -05:00 [INF] 1 customers found
+2019-10-15 09:03:43.177 -05:00 [INF] View Order History of Michelle Smith
+2019-10-15 09:07:48.642 -05:00 [INF] Begin Program
+2019-10-15 09:08:00.306 -05:00 [INF] Search customer with name: Michelle 
+2019-10-15 09:08:00.307 -05:00 [INF] 1 customers found
+2019-10-15 09:08:02.981 -05:00 [INF] View Order History of Michelle Smith
+2019-10-15 09:08:21.384 -05:00 [INF] Exit Program
