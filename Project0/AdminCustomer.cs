@@ -18,34 +18,34 @@ namespace Project0.App
             do
             {
                 Console.WriteLine("Welcome to the Customer Records! \n What would you like to do?");
-                Console.WriteLine(" [1] Add Customers \n [2] Search Customers \n [3] Get Customer History \n [4] Go back to Main Menu \n [5] Exit");
+                Console.WriteLine(" [0] Add Customers \n [1] Search Customers \n [2] Get Customer History \n [3] Go back to Main Menu \n [4] Exit");
                 input = Console.ReadLine();
             } while (ErrorHandler.InvalidIntInput(input));
 
             switch (input)
             {
-                case "1":
+                case "0":
                     //Go to Add Customer UI
                     AddCustomerMenu();
                     break;
 
-                case "2":
+                case "1":
                     //Go to Search Customer UI
                     SearchCustomerMenu();
                     break;
 
-                case "3":
+                case "2":
                     //Go to Customer History UI
                     AdminOrder ao = new AdminOrder();
                     ao.ViewCustomerOrderHistory();
                     break;
-                case "4":
+                case "3":
                     //go back to Main Menu
                     AdminMenu main = new AdminMenu();
                     main.Welcome();
                     break;
 
-                case "5":
+                case "4":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
                     exit.Exit();
@@ -212,22 +212,22 @@ namespace Project0.App
                 string input;
                 do
                 {
-                    Console.WriteLine("Where would you like to go? \n [1] Back to main menu? \n [2] Customer Menu?\n [3] Exit?");
+                    Console.WriteLine("Where would you like to go? \n [0] Back to main menu? \n [1] Customer Menu?\n [2] Exit?");
                     input = Console.ReadLine();
                 } while (ErrorHandler.InvalidIntInput(input));
 
                 switch (input)
                 {
-                    case "1":
+                    case "0":
                         AdminMenu am = new AdminMenu();
                         am.Welcome();
                         break;
 
-                    case "2":
+                    case "1":
                         MainMenu();
                         break;
 
-                    case "3":
+                    case "2":
                         ExitMenu exit = new ExitMenu();
                         exit.Exit();
                         break;

@@ -15,32 +15,32 @@ namespace Project0.App
         public void Menu()
         {
             Console.WriteLine("Welcome to Order UI! \n What would you like to do?");
-            Console.WriteLine(" [1] Place Order \n [2] View Order History of Customer \n [3] View Order History of Location\n [4] Return to Main Menu \n [5] Exit");
+            Console.WriteLine(" [0] Place Order \n [1] View Order History of Customer \n [2] View Order History of Location\n [3] Return to Main Menu \n [4] Exit");
             string input = Console.ReadLine();
             switch (input)
             {
-                case "1":
+                case "0":
                     //code to add order
                     AddOrder();
                     break;
 
-                case "2":
+                case "1":
                     //code to view order history of customer
                     ViewCustomerOrderHistory();
                     break;
 
-                case "3":
+                case "2":
                     //code to view order history of location
                     ViewLocationOrderHistory();
                     break;
 
-                case "4":
+                case "3":
                     //go back to Main Menu
                     AdminMenu main = new AdminMenu();
                     main.Welcome();
                     break;
 
-                case "5":
+                case "4":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
                     exit.Exit();
@@ -124,23 +124,23 @@ namespace Project0.App
             do
             {
                 Console.WriteLine("How would you like the order history to be ordered?");
-                Console.WriteLine(" [1] Earliest First (Default) \n [2] Latest First \n [3] Cheapest First \n [4] Most Expensive First ");
+                Console.WriteLine(" [0] Earliest First (Default) \n [1] Latest First \n [2] Cheapest First \n [3] Most Expensive First ");
                 string input = Console.ReadLine();
                 switch (input)
                 {
-                    case "1":
+                    case "0":
                         history = oh.EarliestFirst(history);
                         return history;
 
-                    case "2":
+                    case "1":
                         history = oh.LatestFirst(history);
                         return history;
 
-                    case "3":
+                    case "2":
                         history = oh.CheapestFirst(history);
                         return history;
 
-                    case "4":
+                    case "3":
                         history = oh.MostExpensiveFirst(history);
                         return history;
 

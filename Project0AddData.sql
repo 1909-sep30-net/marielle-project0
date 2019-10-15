@@ -1,3 +1,10 @@
+Delete from Inventory
+delete from CustOrder
+delete from Orders
+delete from Customer
+delete from Product
+delete from Location
+
 INSERT INTO Location (BranchName, Street, City, State, Zipcode) VALUES 
 ('Flagship', '123 Main', 'Arlington', 'TX', '76010'),
 ('Branch1', '1 Branch St', 'Dallas', 'TX', '76110'),
@@ -27,3 +34,5 @@ INSERT INTO Inventory (ProductID, Stock, LocationID) VALUES
 (1003, 20, 1002)
 
 SELECT * FROM Inventory
+
+

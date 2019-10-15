@@ -19,6 +19,8 @@ namespace Project0.App
             switch (choice)
             {
                 case "N":
+                    AdminMenu begin = new AdminMenu();
+                    begin.Welcome();
                     break;
 
                 case "Y":

@@ -15,28 +15,28 @@ namespace Project0.App
         public void Menu()
         {
             Console.WriteLine("Welcome to Location UI! \n What would you like to do?");
-            Console.WriteLine("[1] View Order History of Location \n [2] View Location Inventory \n [3] Go back to Main Menu \n [4] Exit");
+            Console.WriteLine(" [0] View Order History of Location \n [1] View Location Inventory \n [2] Go back to Main Menu \n [3] Exit");
             string input = Console.ReadLine();
             switch (input)
             {
-                case "1":
+                case "0":
                     //code to view orderhistory of location
                     AdminOrder ao = new AdminOrder();
                     ao.ViewLocationOrderHistory();
                     break;
 
-                case "2":
+                case "1":
                     //code to view location inventory
                     ViewLocationInventory();
                     break;
 
-                case "3":
+                case "2":
                     //go back to Main Menu
                     AdminMenu main = new AdminMenu();
                     main.Welcome();
                     break;
 
-                case "4":
+                case "3":
                     //go to exit
                     ExitMenu exit = new ExitMenu();
                     exit.Exit();
@@ -59,7 +59,7 @@ namespace Project0.App
             int i = 0;
             foreach (Location l in locations)
             {
-                Console.WriteLine($"[{i}] {l.BranchName}");
+                Console.WriteLine($" [{i}] {l.BranchName}");
                 i++;
             }
             string input;
