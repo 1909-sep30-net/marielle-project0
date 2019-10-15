@@ -94,3 +94,10 @@
 2019-10-15 13:20:22.281 -05:00 [INF] 2 customers found
 2019-10-15 13:20:23.959 -05:00 [ERR] Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
 2019-10-15 13:20:44.461 -05:00 [INF] Exit Program
+2019-10-15 14:45:36.909 -05:00 [INF] Begin Program
+2019-10-15 14:46:04.311 -05:00 [INF] Begin Program
+2019-10-15 15:05:20.468 -05:00 [INF] Begin Program
+2019-10-15 15:05:47.588 -05:00 [ERR] Input string was not in a correct format.
+2019-10-15 15:06:05.531 -05:00 [INF] View Order History of 
+2019-10-15 15:07:58.955 -05:00 [ERR] A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+2019-10-15 15:08:08.150 -05:00 [INF] Exit Program
