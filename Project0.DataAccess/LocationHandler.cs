@@ -74,15 +74,9 @@ namespace Project0.DataAccess
             //updates store inventory and also rejects orders with too high quantity
             using var context = GetContext();
             if (inv.Stock < 1) throw new BL.InvalidStockException("Quantity should be greater than 0");
-            List<Inventory> tocheck = context.Inventory.Where(i => i.LocationId == context.Location.Single(l => l.BranchName == local.BranchName).LocationId).ToList();
-            foreach (Inventory item in tocheck)
-            {
-                if (item.ProductId == context.Product.First(p => p.Name == inv.Prod.Name).ProductId)
-                {
-                    if (inv.Stock > item.Stock) throw new InsufficientStockException("Stock Insufficient");
-                    item.Stock = item.Stock - inv.Stock;
-                }
-            }
+            Inventory item = context.Inventory.Single(i => i.LocationId == context.Location.Single(l => l.BranchName == local.BranchName).LocationId && i.ProductId == context.Product.First(p => p.Name == inv.Prod.Name).ProductId);
+            if (inv.Stock > item.Stock) throw new InsufficientStockException("Stock Insufficient");
+            item.Stock = item.Stock - inv.Stock;
             context.SaveChanges();
             Log.Information("Inventory Updated");
         }
